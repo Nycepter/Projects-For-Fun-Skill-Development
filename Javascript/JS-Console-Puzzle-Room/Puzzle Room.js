@@ -30,7 +30,7 @@ while (true) {
     if (choice3 == "Input code") {
       let number1 = Number(rlSync.question("Enter the first number\n"));
       let number2 = Number(rlSync.question("Enter the second number\n"));
-      let number3 = Number(rlSync.question("Enter the second number\n"));
+      let number3 = Number(rlSync.question("Enter the third number\n"));
       let sum = number1 + number2 + number3;
       if (sum == 20) {
         console.log("You hear a click as the door is unlocked!");
