@@ -275,7 +275,9 @@ function groupCombat() {
       } reducing their HP to ${(partySel.healthPoints =
         partySel.healthPoints - Monsters.Dragon.damage)}`
     );
-
+    if (partySel.healthPoints < 1) {
+      console.log(`${partySel.name} has died. `);
+    }
     if (
       Party.Robbie.healthPoints < 1 &&
       Party.Grease.healthPoints < 1 &&
