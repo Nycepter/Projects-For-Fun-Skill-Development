@@ -383,7 +383,7 @@ while True:
                         if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print("  A    B    C    D    E    F    G")
@@ -428,7 +428,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
@@ -474,7 +474,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
@@ -520,7 +520,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
@@ -566,7 +566,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
@@ -612,7 +612,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
@@ -658,7 +658,7 @@ while True:
                             if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
                                 if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
 
-                                    break
+                                    continue
                                 else:
                                     Board[0][Letter_Index] = "O"
                                     print(
