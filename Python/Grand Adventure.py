@@ -138,7 +138,8 @@ while Awake == False:
                         Awake = True
                         break
                     else:
-                        fake_type("that answer is not correct! Please try again.")
+                        fake_type(
+                            "that answer is not correct! Please try again.")
                         fake_type("Now away with you!")
                         continue
                 if Choice1_A_2 == "go back":
@@ -171,7 +172,8 @@ while Awake == False:
                         "Would you like to take the key? 'yes' or 'no'\n")
                     if TakeKey == "yes":
                         HasKey = True
-                        fake_type("\nYou take the key, you look down to put it in your pocket and as you look up, you are suddenly standing in the same place you began. You can feel the key still in your pocket.")
+                        fake_type(
+                            "\nYou take the key, you look down to put it in your pocket and as you look up, you are suddenly standing in the same place you began. You can feel the key still in your pocket.")
                         continue
                     if TakeKey == "no":
                         fake_type(
@@ -187,7 +189,8 @@ while Awake == False:
 
         elif Choice1 == "pirate ship" and HasKey == True:
             fake_type("The cabin you saw before is now gone! How strange...")
-            fake_type("Almost as strange as finding yourself back where you began, with no memory of how you got here!")
+            fake_type(
+                "Almost as strange as finding yourself back where you began, with no memory of how you got here!")
             continue
 
         elif Choice1 == "wake up":
