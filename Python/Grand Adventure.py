@@ -387,20 +387,23 @@ while Hallway_Complete == False:
                 except:
                     print("Error, try again.")
                     continue
-                    if Passed1 == True and Passed2 == True and Passed3 == True and Passed4 == True and Passed5 == True:
-                        fake_type(
-                            "You passed all the tests, the portal is now ready to use.")
-                        fake_type("Would you like to go through the portal?")
-                        Portal_Choice2 = input("> ")
-                        if Portal_Choice2 == "yes":
-                            fake_type("To be continued...")
-                        else:
-                            continue
 
+                if Passed1 == True and Passed2 == True and Passed3 == True and Passed4 == True and Passed5 == True:
+                    fake_type(
+                        "You passed all the tests, the portal is now ready to use.")
+                    fake_type("Would you like to go through the portal?")
+                    Portal_Choice2 = input("> ")
+                    if Portal_Choice2 == "yes":
+                        fake_type("To be continued...")
                     else:
-                        fake_type(
-                            "One or more tests failed, please try again.")
                         continue
+
+                else:
+                    fake_type(
+                        "One or more tests failed, please try again.")
+                    continue
+        if Portal_Choice == "go back":
+            continue
         else:
             fake_type(
                 "You feel as though the portal is rejecting you for some reason, you suddenly find yourself back at the beginning of the hallway!")
