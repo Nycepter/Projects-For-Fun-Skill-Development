@@ -69,132 +69,132 @@ Awake = False
 
 while Awake == False:
 
-    print("You see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
+    fake_type("You see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
     HasKey = False
     OpenLock = False
     while True:
 
-        print("\nWhere would you like to go?")
+        fake_type("\nWhere would you like to go?")
         Choice1 = input(
             "Would you like to go to the 'temple', investigate the 'ruins' or look at the remains of the 'pirate ship'?\n")
 
         if Choice1 == "temple":
-            print("\nAs you are heading towards the temple, you come across a sign that says 'TURN BACK NOW OR SUFFER'. You notice a trail leading from the sign into the woods.")
+            fake_type("\nAs you are heading towards the temple, you come across a sign that says 'TURN BACK NOW OR SUFFER'. You notice a trail leading from the sign into the woods.")
             Choice1_A = input(
                 "Would you like to ignore the sign and continue to the 'temple', take the signs advice and 'turn back', or 'follow the trail' into the woods?\n")
             if Choice1_A == 'temple' and OpenLock == False:
-                print(
+                fake_type(
                     "\nYou arrive at the temple! There is a sturdy gate locking the entrance. The gate has a key hole!")
                 Choice1_A_1 = input(
                     "Would you like to 'enter key', or 'go back' to your boat?\n")
                 if Choice1_A_1 == "enter key":
                     if HasKey == False:
-                        print(
+                        fake_type(
                             "\nYou do not have the key that goes to this lock, go find it!")
-                        print("Now begone!")
+                        fake_type("Now begone!")
                         continue
                     if HasKey == True:
                         OpenLock = True
-                        print(
+                        fake_type(
                             "\nAs you turn the key, the lock drops away revaling a screen that has an equation and a place for you to enter an answer.")
-                        print("The equation is (4x3-6+1)3(12÷6+1).")
+                        fake_type("The equation is (4x3-6+1)3(12÷6+1).")
                         Choice1_A_2 = input(
                             "Would you like to 'enter an answer' or 'go back'?\n")
                         if Choice1_A_2 == "enter an answer":
                             Answer = input("\nWhat is your answer?\n")
                             if Answer == "2":
-                                print(
+                                fake_type(
                                     "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!")
-                                print("DING!!!!")
-                                print("DING!!!!DING!!!!DING!!!!")
-                                print("It's your alarm.")
-                                print(
+                                fake_type("DING!!!!")
+                                fake_type("DING!!!!DING!!!!DING!!!!")
+                                fake_type("It's your alarm.")
+                                fake_type(
                                     "Evidently you could have imagined it in your wildest dreams...")
                                 Awake = True
                                 break
                             else:
-                                print(
+                                fake_type(
                                     "that answer is not correct! Please try again.")
-                                print("Now away with you!")
+                                fake_type("Now away with you!")
                                 continue
                         if Choice1_A_2 == "go back":
                             continue
             if Choice1_A == "temple" and OpenLock == True:
-                print(
+                fake_type(
                     "\nThe lock is still open, you see a screen that has an equation and a place for you to enter an answer.")
-                print("The equation is (4x3-6+1)3(12÷6+1).")
+                fake_type("The equation is (4x3-6+1)3(12÷6+1).")
                 Choice1_A_2 = input(
                     "Would you like to 'enter an answer' or 'go back'?\n")
                 if Choice1_A_2 == "enter an answer":
                     Answer = input("\nWhat is your answer?\n")
                     if Answer == "2":
-                        print(
+                        fake_type(
                             "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!")
-                        print("DING!!!!")
-                        print("DING!!!!DING!!!!DING!!!!")
-                        print("It's your alarm.")
-                        print(
+                        fake_type("DING!!!!")
+                        fake_type("DING!!!!DING!!!!DING!!!!")
+                        fake_type("It's your alarm.")
+                        fake_type(
                             "Evidently you could have imagined it in your wildest dreams...")
                         Awake = True
                         break
                     else:
-                        print("that answer is not correct! Please try again.")
-                        print("Now away with you!")
+                        fake_type("that answer is not correct! Please try again.")
+                        fake_type("Now away with you!")
                         continue
                 if Choice1_A_2 == "go back":
                     continue
 
             if Choice1_A == "follow the trail":
-                print(
+                fake_type(
                     "\nAs you are walking along the trail, you somehow get lost and find yourself back where you began!")
                 continue
             if Choice1_A == "turn back":
                 continue
 
         elif Choice1 == "ruins":
-            print("\nThe ruins are mostly rubble, but as you are about to leave, you notice something that catches your eye. There is something engraved into the wall.'These operations once had order, now there is nothing but division amongst the ranks.' There does not seem to be anything else of note around the ruins.")
+            fake_type("\nThe ruins are mostly rubble, but as you are about to leave, you notice something that catches your eye. There is something engraved into the wall.'These operations once had order, now there is nothing but division amongst the ranks.' There does not seem to be anything else of note around the ruins.")
             Choice1_B = input(
                 "there is nothing left to do here, you should 'go back'.\n")
             if Choice1_B == "go back":
                 continue
 
         elif Choice1 == "pirate ship" and HasKey == False:
-            print("\nThe ship is in many pieces, most of which have degraded beyond recognition. However, the cabin seems to be unaturally preseerved. As you approach the door, something begins to appear on the door!\n '2B||!2B'\n  You get the sense that the door is waiting for you to respond...")
+            fake_type("\nThe ship is in many pieces, most of which have degraded beyond recognition. However, the cabin seems to be unaturally preseerved. As you approach the door, something begins to appear on the door!\n '2B||!2B'\n  You get the sense that the door is waiting for you to respond...")
             Choice1_C = input(
                 "Would you like to forget about this magical nonsense and 'go back' to your boat, or 'respond' to the cabin door?\n")
             if Choice1_C == "respond":
                 Response = input("\nWhat would you like to say?\n")
                 if Response == "that is the question":
-                    print(
+                    fake_type(
                         "\nThe door opens! The room is empty except for a key laying in the middle")
                     TakeKey = input(
                         "Would you like to take the key? 'yes' or 'no'\n")
                     if TakeKey == "yes":
                         HasKey = True
-                        print("\nYou take the key, you look down to put it in your pocket and as you look up, you are suddenly standing in the same place you began. You can feel the key still in your pocket.")
+                        fake_type("\nYou take the key, you look down to put it in your pocket and as you look up, you are suddenly standing in the same place you began. You can feel the key still in your pocket.")
                         continue
                     if TakeKey == "no":
-                        print(
+                        fake_type(
                             "\nYou hear a voice say, then there is no need for you to be here, goodbye!")
-                        print("You find yourself back where you began!")
+                        fake_type("You find yourself back where you began!")
                         continue
                 else:
-                    print(
+                    fake_type(
                         "\nThat is incorrect, better luck next time! Deus Ex Machina something someting, you are back where you started!")
                 continue
             if Choice1_C == "go back":
                 continue
 
         elif Choice1 == "pirate ship" and HasKey == True:
-            print("The cabin you saw before is now gone! How strange...")
-            print("Almost as strange as finding yourself back where you began, with no memory of how you got here!")
+            fake_type("The cabin you saw before is now gone! How strange...")
+            fake_type("Almost as strange as finding yourself back where you began, with no memory of how you got here!")
             continue
 
         elif Choice1 == "wake up":
-            print(f"Nice try {Player.Name}, I dont think so.")
+            fake_type(f"Nice try {Player.Name}, I dont think so.")
             continue
         else:
-            print("Invlaid response, try again.")
+            fake_type("Invlaid response, try again.")
             continue
 
 
@@ -307,7 +307,8 @@ while Exposed == False:
             break
 
 fake_type("Dang, you caught me! You are more observant than I expected, this will be a fun game... You now have a choice to make.")
-print("The door opens, revealing a hallway that splits left and right. Directly in front of you is a hole in the wall that seems to be a tunnel to somewhere.")
+fake_type("The door opens, revealing a hallway that splits left and right. Directly in front of you is a hole in the wall that seems to be a tunnel to somewhere.")
+Has_Portal_Key = False
 Hallway_Complete = False
 while Hallway_Complete == False:
     fake_type(
@@ -319,4 +320,785 @@ while Hallway_Complete == False:
                 f"Sorry {Player.Name}, it would seem that you are too big to fit through the opening! You will have to go another way.")
             continue
         else:
-            print("You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: ")
+            fake_type("You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: Wow..... you sure are short!")
+            fake_type("Well, that was anticlamactic, wasn't it?")
+            fake_type("You crawl backwards and leave the tunnel.")
+            continue
+    elif Hallway_Choice == "left":
+        fake_type(
+            "You follow the hallway all the way until the end, there you find a portal.")
+        fake_type(
+            "A random portal in a strange place? There's no way this can be bad, go ahead!")
+        Portal_Choice = input("Do you got through the 'portal' or 'go back'?")
+        if Portal_Choice == "portal" and Has_Portal_Key == True:
+            fake_type("To be continued...")
+        else:
+            fake_type(
+                "You feel as though the portal is rejecting you for some reason, you suddenly find yourself back at the beginning of the hallway!")
+            continue
+    elif Hallway_Choice == "right":
+        fake_type("You go down the hallway and find a locked box.")
+        fake_type("The box is just begging to be opened...")
+        fake_type(
+            f"But, {Player.Name}, what kind of host would I be if I just gave things out willy nilly?")
+        fake_type("If you want what is in the box, you will have to earn it! Let's say... You have to beat me at connect four, four times in a row, no cheating this time, I promise!")
+        fake_type("Do you accept the challenge?")
+        Challenge_Acceptance = input("> ")
+        Player_Score = 0
+        if Challenge_Acceptance == "yes":
+            while Player_Score < 4:
+                Reset = False
+
+                Nycepter_Score_Connect_Four = 0
+                Line1 = ["_", "️_", "️_", "️_", "️_", "️_", "️_"]
+                Line2 = ["_", "_", "️_", "️_", "️_", "️_", "️_"]
+                Line3 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                Line4 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                Line5 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                Line6 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                Board = [Line6, Line5, Line4, Line3, Line2, Line1]
+                print("  A    B    C    D    E    F    G")
+                print(f"{Line1}\n{Line2}\n{Line3}\n{Line4}\n{Line5}\n{Line6}\n")
+                print("Let's play connect four!")
+                print(f"Your score: {Player_Score}")
+                print(f"Nycepter Score: {Nycepter_Score_Connect_Four}")
+
+                Moves = ["a", "b", "c", "d", "e", "f", "g"]
+
+                # X-Loop
+                while Player_Score < 4:
+                    while Reset == True:
+                        Line1 = ["_", "️_", "️_", "️_", "️_", "️_", "️_"]
+                        Line2 = ["_", "_", "️_", "️_", "️_", "️_", "️_"]
+                        Line3 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                        Line4 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                        Line5 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                        Line6 = ["_️", "_️", "_️", "️_", "️_", "️_", "️_"]
+                        Board = [Line6, Line5, Line4, Line3, Line2, Line1]
+                        Reset = False
+                        break
+
+                    Position = input(
+                        "What column would you like to drop your token into? \n")
+                    Column = Position[0].lower()
+                    if Column not in ["a", "b", "c", "d", "e", "f", "g"]:
+                        print("Invalid column selection, please choose again.")
+                        continue
+                    Letter_Index = Moves.index(Column)
+
+                    if Column == "a":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "b":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "c":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "d":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "e":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "f":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    elif Column == "g":
+                        if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                            if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                    if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                        if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                            if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                print(
+                                                    "This Column is full, please choose another.")
+                                                continue
+                                            else:
+                                                Board[0][Letter_Index] = "X"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[1][Letter_Index] = "X"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[2][Letter_Index] = "X"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[3][Letter_Index] = "X"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[4][Letter_Index] = "X"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        else:
+                            Board[5][Letter_Index] = "X"
+                            print("  A    B    C    D    E    F    G")
+                            print(
+                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                    if (Line1[0] == "X" and Line2[0] == "X" and Line3[0] == "X" and Line4[0] == "X") or (Line5[0] == "X" and Line2[0] == "X" and Line3[0] == "X" and Line4[0] == "X") or (Line5[0] == "X" and Line6[0] == "X" and Line3[0] == "X" and Line4[0] == "X") or (Line1[1] == "X" and Line2[1] == "X" and Line3[1] == "X" and Line4[1] == "X") or (Line5[1] == "X" and Line2[1] == "X" and Line3[1] == "X" and Line4[1] == "X") or (Line5[1] == "X" and Line6[1] == "X" and Line3[1] == "X" and Line4[1] == "X") or (Line1[2] == "X" and Line2[2] == "X" and Line3[2] == "X" and Line4[2] == "X") or (Line5[2] == "X" and Line2[2] == "X" and Line3[2] == "X" and Line4[2] == "X") or (Line5[2] == "X" and Line6[2] == "X" and Line3[2] == "X" and Line4[2] == "X") or (Line1[3] == "X" and Line2[3] == "X" and Line3[3] == "X" and Line4[3] == "X") or (Line5[3] == "X" and Line2[3] == "X" and Line3[3] == "X" and Line4[3] == "X") or (Line5[3] == "X" and Line6[3] == "X" and Line3[3] == "X" and Line4[3] == "X") or (Line1[4] == "X" and Line2[4] == "X" and Line3[4] == "X" and Line4[4] == "X") or (Line5[4] == "X" and Line2[4] == "X" and Line3[4] == "X" and Line4[4] == "X") or (Line5[4] == "X" and Line6[4] == "X" and Line3[4] == "X" and Line4[4] == "X") or (Line1[5] == "X" and Line2[5] == "X" and Line3[5] == "X" and Line4[5] == "X") or (Line5[5] == "X" and Line2[5] == "X" and Line3[5] == "X" and Line4[5] == "X") or (Line5[5] == "X" and Line6[5] == "X" and Line3[5] == "X" and Line4[5] == "X") or (Line1[6] == "X" and Line2[6] == "X" and Line3[6] == "X" and Line4[6] == "X") or (Line5[6] == "X" and Line2[6] == "X" and Line3[6] == "X" and Line4[6] == "X") or (Line5[6] == "X" and Line6[6] == "X" and Line3[6] == "X" and Line4[6] == "X") or (Line6[0] == "X" and Line6[1] == "X" and Line6[2] == "X" and Line6[3] == "X") or (Line6[4] == "X" and Line6[1] == "X" and Line6[2] == "X" and Line6[3] == "X") or (Line6[4] == "X" and Line6[5] == "X" and Line6[2] == "X" and Line6[3] == "X") or (Line6[4] == "X" and Line6[5] == "X" and Line6[6] == "X" and Line6[3] == "X") or (Line5[0] == "X" and Line5[1] == "X" and Line5[2] == "X" and Line5[3] == "X") or (Line5[4] == "X" and Line5[1] == "X" and Line5[2] == "X" and Line5[3] == "X") or (Line5[4] == "X" and Line5[5] == "X" and Line5[2] == "X" and Line5[3] == "X") or (Line5[4] == "X" and Line5[5] == "X" and Line5[6] == "X" and Line5[3] == "X") or (Line4[0] == "X" and Line4[1] == "X" and Line4[2] == "X" and Line4[3] == "X") or (Line4[4] == "X" and Line4[1] == "X" and Line4[2] == "X" and Line4[3] == "X") or (Line4[4] == "X" and Line4[5] == "X" and Line4[2] == "X" and Line4[3] == "X") or (Line4[4] == "X" and Line4[5] == "X" and Line4[6] == "X" and Line4[3] == "X") or (Line3[0] == "X" and Line3[1] == "X" and Line3[2] == "X" and Line3[3] == "X") or (Line3[4] == "X" and Line3[1] == "X" and Line3[2] == "X" and Line3[3] == "X") or (Line3[4] == "X" and Line3[5] == "X" and Line3[2] == "X" and Line3[3] == "X") or (Line3[4] == "X" and Line3[5] == "X" and Line3[6] == "X" and Line3[3] == "X") or (Line2[0] == "X" and Line2[1] == "X" and Line2[2] == "X" and Line2[3] == "X") or (Line2[4] == "X" and Line2[1] == "X" and Line2[2] == "X" and Line2[3] == "X") or (Line2[4] == "X" and Line2[5] == "X" and Line2[2] == "X" and Line2[3] == "X") or (Line2[4] == "X" and Line2[5] == "X" and Line2[6] == "X" and Line2[3] == "X") or (Line1[0] == "X" and Line1[1] == "X" and Line1[2] == "X" and Line1[3] == "X") or (Line1[4] == "X" and Line1[1] == "X" and Line1[2] == "X" and Line1[3] == "X") or (Line1[4] == "X" and Line1[5] == "X" and Line1[2] == "X" and Line1[3] == "X") or (Line1[4] == "X" and Line1[5] == "X" and Line1[6] == "X" and Line1[3] == "X") or (Line6[3] == "X" and Line5[4] == "X" and Line4[5] == "X" and Line3[6] == "X") or (Line5[3] == "X" and Line4[4] == "X" and Line3[5] == "X" and Line2[6] == "X") or (Line4[3] == "X" and Line3[4] == "X" and Line2[5] == "X" and Line1[6] == "X") or (Line6[2] == "X" and Line5[3] == "X" and Line4[4] == "X" and Line3[5] == "X") or (Line5[2] == "X" and Line4[3] == "X" and Line3[4] == "X" and Line2[5] == "X") or (Line4[2] == "X" and Line3[3] == "X" and Line2[4] == "X" and Line1[5] == "X") or (Line6[1] == "X" and Line5[2] == "X" and Line4[3] == "X" and Line3[4] == "X") or (Line5[1] == "X" and Line4[2] == "X" and Line3[3] == "X" and Line2[4] == "X") or (Line4[1] == "X" and Line3[2] == "X" and Line2[3] == "X" and Line1[4] == "X") or (Line6[0] == "X" and Line5[1] == "X" and Line4[2] == "X" and Line3[3] == "X") or (Line5[0] == "X" and Line4[1] == "X" and Line3[2] == "X" and Line2[3] == "X") or (Line4[0] == "X" and Line3[1] == "X" and Line2[2] == "X" and Line1[3] == "X") or (Line4[0] == "X" and Line3[1] == "X" and Line2[2] == "X" and Line1[3] == "X") or (Line5[0] == "X" and Line4[1] == "X" and Line3[2] == "X" and Line2[3] == "X") or (Line6[0] == "X" and Line5[1] == "X" and Line4[2] == "X" and Line3[3] == "X") or (Line4[1] == "X" and Line3[2] == "X" and Line2[3] == "X" and Line1[4] == "X") or (Line5[1] == "X" and Line4[2] == "X" and Line3[3] == "X" and Line2[4] == "X") or (Line6[1] == "X" and Line5[2] == "X" and Line4[3] == "X" and Line3[4] == "X") or (Line4[2] == "X" and Line3[3] == "X" and Line2[4] == "X" and Line1[5] == "X") or (Line5[2] == "X" and Line4[3] == "X" and Line3[4] == "X" and Line2[5] == "X") or (Line6[2] == "X" and Line5[3] == "X" and Line4[4] == "X" and Line3[5] == "X") or (Line4[3] == "X" and Line3[4] == "X" and Line2[5] == "X" and Line1[6] == "X") or (Line5[3] == "X" and Line4[4] == "X" and Line3[5] == "X" and Line2[6] == "X") or (Line6[3] == "X" and Line5[4] == "X" and Line4[5] == "X" and Line3[6] == "X"):
+
+                        print("You Win!")
+                        Reset = True
+                        Player_Score += 1
+                        print(f"Your score: {Player_Score}")
+                        print(f"Nycepter Score: {Nycepter_Score_Connect_Four}")
+                        continue
+
+                    # O-Loop
+                    while True:
+
+                        Position = random.choice(Moves)
+                        Column = Position[0].lower()
+                        Letter_Index = Moves.index(Column)
+                        if Column == "a":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "b":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "c":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "d":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "e":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = ")"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "f":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        elif Column == "g":
+                            if Board[5][Letter_Index] == "X" or Board[5][Letter_Index] == "O":
+                                if Board[4][Letter_Index] == "X" or Board[4][Letter_Index] == "O":
+                                    if Board[3][Letter_Index] == "X" or Board[3][Letter_Index] == "O":
+                                        if Board[2][Letter_Index] == "X" or Board[2][Letter_Index] == "O":
+                                            if Board[1][Letter_Index] == "X" or Board[1][Letter_Index] == "O":
+                                                if Board[0][Letter_Index] == "X" or Board[0][Letter_Index] == "O":
+
+                                                    continue
+                                                else:
+                                                    Board[0][Letter_Index] = "O"
+                                                    print(
+                                                        "  A    B    C    D    E    F    G")
+                                                    print(
+                                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                            else:
+                                                Board[1][Letter_Index] = "O"
+                                                print(
+                                                    "  A    B    C    D    E    F    G")
+                                                print(
+                                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                        else:
+                                            Board[2][Letter_Index] = "O"
+                                            print(
+                                                "  A    B    C    D    E    F    G")
+                                            print(
+                                                f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                    else:
+                                        Board[3][Letter_Index] = "O"
+                                        print(
+                                            "  A    B    C    D    E    F    G")
+                                        print(
+                                            f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                                else:
+                                    Board[4][Letter_Index] = "O"
+                                    print("  A    B    C    D    E    F    G")
+                                    print(
+                                        f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                            else:
+                                Board[5][Letter_Index] = "O"
+                                print("  A    B    C    D    E    F    G")
+                                print(
+                                    f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
+
+                        if (Line1[0] == "X" and Line2[0] == "X" and Line3[0] == "O" and Line4[0] == "O") or (Line5[0] == "O" and Line2[0] == "O" and Line3[0] == "O" and Line4[0] == "O") or (Line5[0] == "O" and Line6[0] == "O" and Line3[0] == "O" and Line4[0] == "O") or (Line1[1] == "O" and Line2[1] == "O" and Line3[1] == "O" and Line4[1] == "O") or (Line5[1] == "O" and Line2[1] == "O" and Line3[1] == "O" and Line4[1] == "O") or (Line5[1] == "O" and Line6[1] == "O" and Line3[1] == "O" and Line4[1] == "O") or (Line1[2] == "O" and Line2[2] == "O" and Line3[2] == "O" and Line4[2] == "O") or (Line5[2] == "O" and Line2[2] == "O" and Line3[2] == "O" and Line4[2] == "O") or (Line5[2] == "O" and Line6[2] == "O" and Line3[2] == "O" and Line4[2] == "O") or (Line1[3] == "O" and Line2[3] == "O" and Line3[3] == "O" and Line4[3] == "O") or (Line5[3] == "O" and Line2[3] == "O" and Line3[3] == "O" and Line4[3] == "O") or (Line5[3] == "O" and Line6[3] == "O" and Line3[3] == "O" and Line4[3] == "O") or (Line1[4] == "O" and Line2[4] == "O" and Line3[4] == "O" and Line4[4] == "O") or (Line5[4] == "O" and Line2[4] == "O" and Line3[4] == "O" and Line4[4] == "O") or (Line5[4] == "O" and Line6[4] == "O" and Line3[4] == "O" and Line4[4] == "O") or (Line1[5] == "O" and Line2[5] == "O" and Line3[5] == "O" and Line4[5] == "O") or (Line5[5] == "O" and Line2[5] == "O" and Line3[5] == "O" and Line4[5] == "O") or (Line5[5] == "O" and Line6[5] == "O" and Line3[5] == "O" and Line4[5] == "O") or (Line1[6] == "O" and Line2[6] == "O" and Line3[6] == "O" and Line4[6] == "O") or (Line5[6] == "O" and Line2[6] == "O" and Line3[6] == "O" and Line4[6] == "O") or (Line5[6] == "O" and Line6[6] == "O" and Line3[6] == "O" and Line4[6] == "O") or (Line6[0] == "O" and Line6[1] == "O" and Line6[2] == "O" and Line6[3] == "O") or (Line6[4] == "O" and Line6[1] == "O" and Line6[2] == "O" and Line6[3] == "O") or (Line6[4] == "O" and Line6[5] == "O" and Line6[2] == "O" and Line6[3] == "O") or (Line6[4] == "O" and Line6[5] == "O" and Line6[6] == "O" and Line6[3] == "O") or (Line5[0] == "O" and Line5[1] == "O" and Line5[2] == "O" and Line5[3] == "O") or (Line5[4] == "O" and Line5[1] == "O" and Line5[2] == "O" and Line5[3] == "O") or (Line5[4] == "O" and Line5[5] == "O" and Line5[2] == "O" and Line5[3] == "O") or (Line5[4] == "O" and Line5[5] == "O" and Line5[6] == "O" and Line5[3] == "O") or (Line4[0] == "O" and Line4[1] == "O" and Line4[2] == "O" and Line4[3] == "O") or (Line4[4] == "O" and Line4[1] == "O" and Line4[2] == "O" and Line4[3] == "O") or (Line4[4] == "O" and Line4[5] == "O" and Line4[2] == "O" and Line4[3] == "O") or (Line4[4] == "O" and Line4[5] == "O" and Line4[6] == "O" and Line4[3] == "O") or (Line3[0] == "O" and Line3[1] == "O" and Line3[2] == "O" and Line3[3] == "O") or (Line3[4] == "O" and Line3[1] == "O" and Line3[2] == "O" and Line3[3] == "O") or (Line3[4] == "O" and Line3[5] == "O" and Line3[2] == "O" and Line3[3] == "O") or (Line3[4] == "O" and Line3[5] == "O" and Line3[6] == "O" and Line3[3] == "O") or (Line2[0] == "O" and Line2[1] == "O" and Line2[2] == "O" and Line2[3] == "O") or (Line2[4] == "O" and Line2[1] == "O" and Line2[2] == "O" and Line2[3] == "O") or (Line2[4] == "O" and Line2[5] == "O" and Line2[2] == "O" and Line2[3] == "O") or (Line2[4] == "O" and Line2[5] == "O" and Line2[6] == "O" and Line2[3] == "O") or (Line1[0] == "O" and Line1[1] == "O" and Line1[2] == "O" and Line1[3] == "O") or (Line1[4] == "O" and Line1[1] == "O" and Line1[2] == "O" and Line1[3] == "O") or (Line1[4] == "O" and Line1[5] == "O" and Line1[2] == "O" and Line1[3] == "O") or (Line1[4] == "O" and Line1[5] == "O" and Line1[6] == "O" and Line1[3] == "O") or (Line6[3] == "O" and Line5[4] == "O" and Line4[5] == "O" and Line3[6] == "O") or (Line5[3] == "O" and Line4[4] == "O" and Line3[5] == "O" and Line2[6] == "O") or (Line4[3] == "O" and Line3[4] == "O" and Line2[5] == "O" and Line1[6] == "O") or (Line6[2] == "O" and Line5[3] == "O" and Line4[4] == "O" and Line3[5] == "O") or (Line5[2] == "O" and Line4[3] == "O" and Line3[4] == "O" and Line2[5] == "O") or (Line4[2] == "O" and Line3[3] == "O" and Line2[4] == "O" and Line1[5] == "O") or (Line6[1] == "O" and Line5[2] == "O" and Line4[3] == "O" and Line3[4] == "O") or (Line5[1] == "O" and Line4[2] == "O" and Line3[3] == "O" and Line2[4] == "O") or (Line4[1] == "O" and Line3[2] == "O" and Line2[3] == "O" and Line1[4] == "O") or (Line6[0] == "O" and Line5[1] == "O" and Line4[2] == "O" and Line3[3] == "O") or (Line5[0] == "O" and Line4[1] == "O" and Line3[2] == "O" and Line2[3] == "O") or (Line4[0] == "O" and Line3[1] == "O" and Line2[2] == "O" and Line1[3] == "O") or (Line4[0] == "O" and Line3[1] == "O" and Line2[2] == "O" and Line1[3] == "O") or (Line5[0] == "O" and Line4[1] == "O" and Line3[2] == "O" and Line2[3] == "O") or (Line6[0] == "O" and Line5[1] == "O" and Line4[2] == "O" and Line3[3] == "O") or (Line4[1] == "O" and Line3[2] == "O" and Line2[3] == "O" and Line1[4] == "O") or (Line5[1] == "O" and Line4[2] == "O" and Line3[3] == "O" and Line2[4] == "O") or (Line6[1] == "O" and Line5[2] == "O" and Line4[3] == "O" and Line3[4] == "O") or (Line4[2] == "O" and Line3[3] == "O" and Line2[4] == "O" and Line1[5] == "O") or (Line5[2] == "O" and Line4[3] == "O" and Line3[4] == "O" and Line2[5] == "O") or (Line6[2] == "O" and Line5[3] == "O" and Line4[4] == "O" and Line3[5] == "O") or (Line4[3] == "O" and Line3[4] == "O" and Line2[5] == "O" and Line1[6] == "O") or (Line5[3] == "O" and Line4[4] == "O" and Line3[5] == "O" and Line2[6] == "O") or (Line6[3] == "O" and Line5[4] == "O" and Line4[5] == "O" and Line3[6] == "O"):
+                            print("The Computer Wins!")
+                            Reset = True
+                            Nycepter_Score_Connect_Four += 1
+                            Player_Score = 0
+                            print(f"Your score: {Player_Score}")
+                            print(
+                                f"Nycepter Score: {Nycepter_Score_Connect_Four}")
+                            break
+                        else:
+                            break
+        fake_type("Congratulations! The box is now unlocked.")
+        fake_type("Inside the box is a heavy keycard that says: Portal Key.")
+        Has_Portal_Key = True
+        fake_type("I will take you back to the beginning now.")
+        continue
