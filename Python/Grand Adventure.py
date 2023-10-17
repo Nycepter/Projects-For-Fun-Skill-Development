@@ -332,7 +332,7 @@ while Hallway_Complete == False:
             "You follow the hallway all the way until the end, there you find a portal.")
         fake_type(
             "A random portal in a strange place? There's no way this can be bad, go ahead!")
-        fake_type("Do you got through the 'portal' or 'go back'?")
+        fake_type("Do you go through the 'portal' or 'go back'?")
         Portal_Choice = input("> ")
         if Portal_Choice == "portal" and Has_Portal_Key == True:
             fake_type(
