@@ -334,7 +334,67 @@ while Hallway_Complete == False:
             "A random portal in a strange place? There's no way this can be bad, go ahead!")
         Portal_Choice = input("Do you got through the 'portal' or 'go back'?")
         if Portal_Choice == "portal" and Has_Portal_Key == True:
-            fake_type("To be continued...")
+            fake_type(
+                "The keycard has to be put into the portal terminal, but when you try to put the card in the terminal says:")
+            fake_type(
+                "Error: Please finish current task before attempting another.")
+            fake_type(
+                "The current task on the screen says: Write a statement that subtracts 3 from i and then multiplies the result by 2.")
+            statement = input()
+            for i in range(20, 25):
+                statement
+                if i == 20 and eval(statement) == 34:
+                    fake_type("Testing...")
+                    fake_type("Test 1 passed.")
+                    Passed1 = True
+                elif i == 20 and eval(statement) != 34:
+                    fake_type("Test 1 failed.")
+                    Passed1 = False
+                elif i == 21 and eval(statement) == 36:
+                    fake_type("Testing...")
+                    fake_type("Test 2 passed.")
+                    Passed2 = True
+                elif i == 21 and eval(statement) != 36:
+                    fake_type("Test 2 failed.")
+                    Passed2 = False
+                elif i == 22 and eval(statement) == 38:
+                    fake_type("Testing...")
+                    fake_type("Test 3 passed.")
+                    Passed3 = True
+                elif i == 22 and eval(statement) != 38:
+                    fake_type("Test 3 failed.")
+                    Passed3 = False
+                elif i == 23 and eval(statement) == 40:
+                    fake_type("Testing...")
+                    fake_type("Test 4 passed.")
+                    Passed4 = True
+                elif i == 23 and eval(statement) != 40:
+                    fake_type("Test 4 failed.")
+                    Passed4 = False
+                elif i == 24 and eval(statement) == 42:
+                    fake_type("Testing...")
+                    fake_type("Test 5 passed.")
+                    Passed5 = True
+                elif i == 24 and eval(statement) != 42:
+                    fake_type("Test 5 failed.")
+                    Passed5 = False
+                else:
+                    fake_type("Error, try again.")
+                    continue
+
+            if Passed1 == True and Passed2 == True and Passed3 == True and Passed4 == True and Passed5 == True:
+                fake_type(
+                    "You passed all the tests, the portal is now ready to use.")
+                fake_type("Would you like to go through the portal?")
+                Portal_Choice2 = input("> ")
+                if Portal_Choice2 == "yes":
+                    fake_type("To be continued...")
+                else:
+                    continue
+
+            else:
+                fake_type("One or more tests failed, please try again.")
+                continue
         else:
             fake_type(
                 "You feel as though the portal is rejecting you for some reason, you suddenly find yourself back at the beginning of the hallway!")
