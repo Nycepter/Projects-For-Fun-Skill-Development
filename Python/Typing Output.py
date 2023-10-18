@@ -11,7 +11,7 @@ def fake_type(words):
     words += "\n"
     for char in words:
         time.sleep(random.choice(
-            [0.3, 0.11, 0.08, 0.07, 0.07, 0.07, 0.06, 0.06, 0.05, 0.01]))
+            [0.01]))
         sys.stdout.write(char)
         sys.stdout.flush(
 
@@ -32,7 +32,7 @@ Passed5 = False
 
 
 while True:
-    print("Write a statement that subtracts 3 from i and then multiplies by 2: ")
+    fake_type("Write a statement that subtracts 3 from i and then multiplies by 2: ")
     statement = input()
     try:
         for i in range(20, 25):
