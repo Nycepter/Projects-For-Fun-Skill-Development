@@ -22,7 +22,7 @@ def encrypt(message, shifter):
                 encrypted_message.append(shifted_letter)
                 shifted_letters += 1
 
-        else:  # the spaces count as letter not in alphabet so the else statement is what includes them in the output
+        else:
             encrypted_message.append(letter_to_be_shifted)
     encrypted_message_finished = "".join(encrypted_message)
     print("\nYour encrypted message is:")
@@ -49,7 +49,7 @@ def decrypt(message, shifter):
                 shifted_letter = alphabet[shifted_index]
                 encrypted_message.append(shifted_letter)
                 shifted_letters += 1
-        else:  # the spaces count as letter not in alphabet so the else statement is what includes them in the output
+        else:
             encrypted_message.append(letter_to_be_shifted)
     encrypted_message_finished = "".join(encrypted_message)
     print("\nYour decrypted message is:")
@@ -60,11 +60,11 @@ while True:
     choice = input("Would you like to encrypt or decrypt a message?\n").lower()
     if choice == "encrypt":
         encrypt(input("\nEnter the message you would like to encrypt: \n"),
-                int(input("\nEnter the number you want to shift by: \n")))
+                int(input("\nEnter the number key: \n")))
         continue
     elif choice == "decrypt":
         decrypt(input("\nEnter the message you would like to decrypt: \n"),
-                int(input("\nEnter the number you want to shift by: \n")))
+                int(input("\nEnter the number key: \n")))
         continue
     else:
         print("\nError, please choose encrypt or decrypt. \n")
