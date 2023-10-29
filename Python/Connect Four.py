@@ -575,7 +575,7 @@ while True:
                                         f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
                             else:
-                                Board[1][Letter_Index] = ")"
+                                Board[1][Letter_Index] = "OF"
                                 print("  A    B    C    D    E    F    G")
                                 print(
                                     f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
