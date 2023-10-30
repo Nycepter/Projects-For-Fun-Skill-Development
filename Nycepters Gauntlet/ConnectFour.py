@@ -2,23 +2,9 @@ import time
 import random
 import sys
 import textwrap
+from Intro import Player
+from Functions import fake_type
 
-
-def fake_type(words):
-    words += "\n"
-    for char in words:
-        time.sleep(random.choice(
-            [0.05]))
-        sys.stdout.write(char)
-        sys.stdout.flush(
-        )
-    time.sleep(.3)
-
-class Player:
-    Name = ""
-    Age = 0
-    Height = 0
-    Gender = ""
 
 def Connect_Four():
     fake_type("Dang, you caught me! You are more observant than I expected, this will be a fun game... You now have a choice to make.")
@@ -35,7 +21,8 @@ def Connect_Four():
                     f"Sorry {Player.Name}, it would seem that you are too big to fit through the opening! You will have to go another way.")
                 continue
             else:
-                fake_type("You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: Wow..... you sure are short!")
+                fake_type(
+                    "You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: Wow..... you sure are short!")
                 fake_type("Well, that was anticlamactic, wasn't it?")
                 fake_type("You crawl backwards and leave the tunnel.")
                 continue
@@ -204,7 +191,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -253,7 +241,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -302,7 +291,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -351,7 +341,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -400,7 +391,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -449,7 +441,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -498,7 +491,8 @@ def Connect_Four():
 
                                     else:
                                         Board[3][Letter_Index] = "X"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -520,7 +514,8 @@ def Connect_Four():
                             Reset = True
                             Player_Score += 1
                             print(f"Your score: {Player_Score}")
-                            print(f"Nycepter Score: {Nycepter_Score_Connect_Four}")
+                            print(
+                                f"Nycepter Score: {Nycepter_Score_Connect_Four}")
                             continue
 
                         # O-Loop
@@ -567,7 +562,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -616,7 +612,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -665,7 +662,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -714,7 +712,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -763,7 +762,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -812,7 +812,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 
@@ -861,7 +862,8 @@ def Connect_Four():
 
                                     else:
                                         Board[4][Letter_Index] = "O"
-                                        print("  A    B    C    D    E    F    G")
+                                        print(
+                                            "  A    B    C    D    E    F    G")
                                         print(
                                             f"{Line6}\n{Line5}\n{Line4}\n{Line3}\n{Line2}\n{Line1}\n")
 

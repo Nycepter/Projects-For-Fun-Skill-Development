@@ -9,13 +9,6 @@ from RPS import RPS
 from ConnectFour import Connect_Four
 
 
-class Player:
-    Name = ""
-    Age = 0
-    Height = 0
-    Gender = ""
-
-
 Run_Intro()
 Island_Game()
 RPS()

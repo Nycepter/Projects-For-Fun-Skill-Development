@@ -2,18 +2,14 @@ import time
 import random
 import sys
 import textwrap
+from Functions import fake_type
 
 
-def fake_type(words):
-    words += "\n"
-    for char in words:
-        time.sleep(random.choice(
-            [0.05]))
-        sys.stdout.write(char)
-        sys.stdout.flush(
-
-        )
-    time.sleep(.3)
+class Player:
+    Name = ""
+    Age = 0
+    Height = 0
+    Gender = ""
 
 
 def Run_Intro():
@@ -29,6 +25,7 @@ def Run_Intro():
 
     fake_type(
         "\n\n\n Hello there... Before we get started, please tell me your name.")
+
     Player.Name = input("> ")
     fake_type("That is a stupid name, I think I will call you Bob.")
     fake_type(f"I am just kidding {Player.Name}, that is a good name!")
@@ -60,4 +57,5 @@ def Run_Intro():
     fake_type("I have a series of challenges for you!")
     fake_type(
         "But alas, you are currently in a strange place and need to find your way out.\n\n\n")
-    return Player.Age, Player.Name, Player.Height, Player.Gender
+    result = [Player.Age, Player.Name, Player.Height, Player.Gender]
+    return result

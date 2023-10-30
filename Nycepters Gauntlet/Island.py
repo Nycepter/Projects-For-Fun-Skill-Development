@@ -2,29 +2,14 @@ import time
 import random
 import sys
 import textwrap
-
-
-def fake_type(words):
-    words += "\n"
-    for char in words:
-        time.sleep(random.choice(
-            [0.05]))
-        sys.stdout.write(char)
-        sys.stdout.flush(
-        )
-    time.sleep(.3)
-
-
-class Player:
-    Name = ""
-    Age = 0
-    Height = 0
-    Gender = ""
+from Intro import Player
+from Functions import fake_type
 
 
 def Island_Game():
     Awake = False
     while Awake == False:
+
         fake_type(f"Hello {Player.Name}")
         fake_type("You see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
         HasKey = False
