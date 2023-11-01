@@ -4,6 +4,9 @@ import sys
 import textwrap
 from Intro import Player
 from Functions import fake_type
+import os
+import subprocess
+from Functions import clear_console
 
 
 def Connect_Four():
@@ -15,16 +18,19 @@ def Connect_Four():
         fake_type(
             "Do you want to go 'left', 'right', or go through the 'tunnel'? So many choices so little time")
         Hallway_Choice = input("> ")
+        clear_console()
         if Hallway_Choice == "tunnel":
             if Player.Height > 65:
                 fake_type(
                     f"Sorry {Player.Name}, it would seem that you are too big to fit through the opening! You will have to go another way.")
+                
                 continue
             else:
                 fake_type(
                     "You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: Wow..... you sure are short!")
                 fake_type("Well, that was anticlamactic, wasn't it?")
                 fake_type("You crawl backwards and leave the tunnel.")
+                
                 continue
         elif Hallway_Choice == "left":
             fake_type(
@@ -33,6 +39,7 @@ def Connect_Four():
                 "A random portal in a strange place? There's no way this can be bad, go ahead!")
             fake_type("Do you go through the 'portal' or 'go back'?")
             Portal_Choice = input("> ")
+            clear_console()
             if Portal_Choice == "portal" and Has_Portal_Key == True:
                 fake_type(
                     "The keycard has to be put into the portal terminal, but when you try to put the card in the terminal says:")
@@ -42,6 +49,7 @@ def Connect_Four():
                     fake_type(
                         "The current task on the screen says: Write a statement that subtracts 3 from i and then multiplies the result by 2.")
                     statement = input("> ")
+                    clear_console()
                     try:
                         for i in range(20, 25):
                             statement
@@ -92,8 +100,9 @@ def Connect_Four():
                             "You passed all the tests, the portal is now ready to use.")
                         fake_type("Would you like to go through the portal?")
                         Portal_Choice2 = input("> ")
+                        clear_console()
                         if Portal_Choice2 == "yes":
-                            fake_type("To be continued...")
+                            
                             return
                         else:
                             continue

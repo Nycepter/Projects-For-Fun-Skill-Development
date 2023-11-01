@@ -7,10 +7,14 @@ from Intro import Run_Intro
 from Island import Island_Game
 from RPS import RPS
 from ConnectFour import Connect_Four
-
+import os
+import subprocess
+from Functions import clear_console
+from Horror import Haunted_School
 
 Run_Intro()
 Island_Game()
 RPS()
 Connect_Four()
-print("Test")
+Haunted_School()
+print("To be continued...")

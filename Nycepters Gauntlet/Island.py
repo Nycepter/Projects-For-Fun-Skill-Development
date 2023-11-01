@@ -4,31 +4,38 @@ import sys
 import textwrap
 from Intro import Player
 from Functions import fake_type
+import os
+import subprocess
+from Functions import clear_console
 
 
 def Island_Game():
     Awake = False
     while Awake == False:
 
-        fake_type(f"Hello {Player.Name}")
         fake_type("You see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
         HasKey = False
         OpenLock = False
         while True:
 
             fake_type("\nWhere would you like to go?")
-            Choice1 = fake_type(input(
-                "Would you like to go to the 'temple', investigate the 'ruins' or look at the remains of the 'pirate ship'?\n> "))
-
+            fake_type(
+                "Would you like to go to the 'temple', investigate the 'ruins' or look at the remains of the 'pirate ship'?")
+            Choice1 = input("> ")
+            clear_console()
             if Choice1 == "temple":
                 fake_type("\nAs you are heading towards the temple, you come across a sign that says 'TURN BACK NOW OR SUFFER'. You notice a trail leading from the sign into the woods.")
-                Choice1_A = fake_type(input(
-                    "Would you like to ignore the sign and continue to the 'temple', take the signs advice and 'turn back', or 'follow the trail' into the woods?\n> "))
+                fake_type(
+                    "Would you like to ignore the sign and continue to the 'temple', take the signs advice and 'turn back', or 'follow the trail' into the woods?")
+                Choice1_A = input("> ")
+                clear_console()
                 if Choice1_A == 'temple' and OpenLock == False:
                     fake_type(
                         "\nYou arrive at the temple! There is a sturdy gate locking the entrance. The gate has a key hole!")
-                    Choice1_A_1 = fake_type(input(
-                        "Would you like to 'enter key', or 'go back' to your boat?\n> "))
+                    fake_type(
+                        "Would you like to 'enter key', or 'go back' to your boat?")
+                    Choice1_A_1 = input("> ")
+                    clear_console()
                     if Choice1_A_1 == "enter key":
                         if HasKey == False:
                             fake_type(
@@ -40,11 +47,15 @@ def Island_Game():
                             fake_type(
                                 "\nAs you turn the key, the lock drops away revealing a screen that has an equation and a place for you to enter an answer.")
                             fake_type("The equation is (4x3-6+1)3(12÷6+1).")
-                            Choice1_A_2 = fake_type(input(
-                                "Would you like to 'enter an answer' or 'go back'?\n> "))
+                            fake_type(
+                                "Would you like to 'enter an answer' or 'go back'?")
+                            Choice1_A_2 = input("> ")
+                            clear_console()
                             if Choice1_A_2 == "enter an answer":
-                                Answer = fake_type(
-                                    input("\nWhat is your answer?\n> "))
+                                fake_type(
+                                    "\nWhat is your answer?")
+                                Answer = input("> ")
+                                clear_console()
                                 if Answer == "2":
                                     fake_type(
                                         "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!")
@@ -66,10 +77,14 @@ def Island_Game():
                     fake_type(
                         "\nThe lock is still open, you see a screen that has an equation and a place for you to enter an answer.")
                     fake_type("The equation is (4x3-6+1)3(12÷6+1).")
-                    Choice1_A_2 = fake_type(input(
-                        "Would you like to 'answer' or 'go back'?\n> "))
+                    fake_type(
+                        "Would you like to 'answer' or 'go back'?")
+                    Choice1_A_2 = input("> ")
+                    clear_console()
                     if Choice1_A_2 == "answer":
-                        Answer = fake_type(input("\nWhat is your answer?\n> "))
+                        Answer = fake_type("\nWhat is your answer?")
+                        Answer = input("> ")
+                        clear_console()
                         if Answer == "2":
                             fake_type(
                                 "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!")
@@ -85,6 +100,7 @@ def Island_Game():
                                 "that answer is not correct! Please try again.")
                             fake_type("Now away with you!")
                             continue
+
                     if Choice1_A_2 == "go back":
                         continue
 
@@ -97,23 +113,31 @@ def Island_Game():
 
             elif Choice1 == "ruins":
                 fake_type("\nThe ruins are mostly rubble, but as you are about to leave, you notice something that catches your eye. There is something engraved into the wall.'These operations once had order, now there is nothing but division amongst the ranks.' There does not seem to be anything else of note around the ruins.")
-                Choice1_B = fake_type(input(
-                    "there is nothing left to do here, you should 'go back'.\n> "))
+                fake_type(
+                    "there is nothing left to do here, you should 'go back'.")
+                Choice1_B = input("> ")
+                clear_console()
                 if Choice1_B == "go back":
                     continue
 
             elif Choice1 == "pirate ship" and HasKey == False:
                 fake_type("\nThe ship is in many pieces, most of which have degraded beyond recognition. However, the cabin seems to be unaturally preseerved. As you approach the door, something begins to appear on the door!\n '2B||!2B'\n  You get the sense that the door is waiting for you to respond...")
-                Choice1_C = fake_type(input(
-                    "Would you like to forget about this magical nonsense and 'go back' to your boat, or 'respond' to the cabin door?\n> "))
+                fake_type(
+                    "Would you like to forget about this magical nonsense and 'go back' to your boat, or 'respond' to the cabin door?")
+                Choice1_C = input("> ")
+                clear_console()
                 if Choice1_C == "respond":
-                    Response = fake_type(
-                        input("\nWhat would you like to say?\n> "))
+                    fake_type(
+                        "\nWhat would you like to say?")
+                    Response = input("> ")
+                    clear_console()
                     if Response == "that is the question":
                         fake_type(
                             "\nThe door opens! The room is empty except for a key laying in the middle")
-                        TakeKey = fake_type(input(
-                            "Would you like to take the key? 'yes' or 'no'\n> "))
+                        TakeKey = fake_type(
+                            "Would you like to take the key? 'yes' or 'no'")
+                        TakeKey = input("> ")
+                        clear_console()
                         if TakeKey == "yes":
                             HasKey = True
                             fake_type(

@@ -106,11 +106,11 @@ def decrypt(message, shifter):
 while True:
     choice = input("Would you like to encrypt or decrypt a message?\n").lower()
     if choice == "encrypt":
-        encrypt(input("\nEnter the message you would like to encrypt: \n"),
+        encrypt(input("\nEnter the message you would like to encrypt: \n").lower(),
                 int(input("\nEnter the number key: \n")))
         continue
     elif choice == "decrypt":
-        decrypt(input("\nEnter the message you would like to decrypt: \n"),
+        decrypt(input("\nEnter the message you would like to decrypt: \n").lower(),
                 int(input("\nEnter the number key: \n")))
         continue
     else:

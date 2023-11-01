@@ -4,6 +4,9 @@ import sys
 import textwrap
 from Intro import Player
 from Functions import fake_type
+import os
+import subprocess
+from Functions import clear_console
 
 
 def RPS():

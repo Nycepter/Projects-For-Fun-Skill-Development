@@ -3,6 +3,9 @@ import random
 import sys
 import textwrap
 from Functions import fake_type
+import os
+import subprocess
+from Functions import clear_console
 
 
 class Player:
@@ -24,25 +27,31 @@ def Run_Intro():
 """
 
     fake_type(
+        '\n\nPlease wait for the " > " to appear before typing your answers during the game.')
+    fake_type(
         "\n\n\n Hello there... Before we get started, please tell me your name.")
 
     Player.Name = input("> ")
+    clear_console()
     fake_type("That is a stupid name, I think I will call you Bob.")
     fake_type(f"I am just kidding {Player.Name}, that is a good name!")
     fake_type("Just a few more questions and then we can get the ball rolling.")
     fake_type("What is your age in years?")
     Player.Age = int(input("> "))
+    clear_console()
     while Player.Age < 10 or Player.Age > 90:
         fake_type("Please provide a valid age...")
         Player.Age = int(input("> "))
     fake_type("What is your height in inches?")
     Player.Height = int(input("> "))
+    clear_console()
     while Player.Height < 30 or Player.Height > 72:
         fake_type("Please provide a valid height...")
         Player.Height = int(input("> "))
 
     fake_type("Are you male, or female?")
     Player.Gender = (input("> "))
+    clear_console()
     Player.Gender = Player.Gender.lower()
     while Player.Gender != "male" and Player.Gender != "female":
         fake_type("Please enter a valid gender...")
@@ -57,5 +66,6 @@ def Run_Intro():
     fake_type("I have a series of challenges for you!")
     fake_type(
         "But alas, you are currently in a strange place and need to find your way out.\n\n\n")
+    clear_console()
     result = [Player.Age, Player.Name, Player.Height, Player.Gender]
     return result
