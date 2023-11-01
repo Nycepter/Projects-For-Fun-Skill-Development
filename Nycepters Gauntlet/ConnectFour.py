@@ -151,7 +151,7 @@ def Connect_Four():
                             break
 
                         Position = input(
-                            "What column would you like to drop your token into? \n")
+                            "What column would you like to drop your token into? \n> ")
                         Column = Position[0].lower()
                         if Column not in ["a", "b", "c", "d", "e", "f", "g"]:
                             print("Invalid column selection, please choose again.")

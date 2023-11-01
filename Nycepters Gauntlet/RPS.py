@@ -55,7 +55,7 @@ def RPS():
             print(f"Draws: {Draws}")
 
             Prompt = input(
-                "Would you like to choose 'Rock' 'Paper' or 'Scissors'?\n")
+                "Would you like to choose 'Rock' 'Paper' or 'Scissors'?\n> ")
             User_Choice = Prompt.lower()
             if User_Choice == "rock":
                 Computer_Choice = "paper"
