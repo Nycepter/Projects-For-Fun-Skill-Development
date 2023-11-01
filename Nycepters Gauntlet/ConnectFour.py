@@ -23,14 +23,14 @@ def Connect_Four():
             if Player.Height > 65:
                 fake_type(
                     f"Sorry {Player.Name}, it would seem that you are too big to fit through the opening! You will have to go another way.")
-                
+
                 continue
             else:
                 fake_type(
                     "You manage to squeeze your way into the tunnel, at the end of the tunnel you find a piece of paper that says: Wow..... you sure are short!")
                 fake_type("Well, that was anticlamactic, wasn't it?")
                 fake_type("You crawl backwards and leave the tunnel.")
-                
+
                 continue
         elif Hallway_Choice == "left":
             fake_type(
@@ -47,7 +47,7 @@ def Connect_Four():
                     "Error: Please finish current task before attempting another.")
                 while True:
                     fake_type(
-                        "The current task on the screen says: Write a statement that subtracts 3 from i and then multiplies the result by 2.")
+                        "The current task on the screen says: Write a statement that subtracts 3 from i and then multiplies the result by 2. Please note that if you want to multiply, you have to use the * symbol")
                     statement = input("> ")
                     clear_console()
                     try:
@@ -102,7 +102,7 @@ def Connect_Four():
                         Portal_Choice2 = input("> ")
                         clear_console()
                         if Portal_Choice2 == "yes":
-                            
+
                             return
                         else:
                             continue
