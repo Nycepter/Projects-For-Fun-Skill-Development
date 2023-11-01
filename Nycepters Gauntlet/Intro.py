@@ -66,6 +66,8 @@ def Run_Intro():
     fake_type("I have a series of challenges for you!")
     fake_type(
         "But alas, you are currently in a strange place and need to find your way out.\n\n\n")
+    fake_type("Please press enter to continue...")
+    input("> ")
     clear_console()
     result = [Player.Age, Player.Name, Player.Height, Player.Gender]
     return result

@@ -390,6 +390,3 @@ def Haunted_School():
                             continue
                 elif Choice13 == "go back":
                     break
-
-
-Haunted_School()
