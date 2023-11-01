@@ -50,7 +50,7 @@ def Haunted_School():
                     if Choice2 == "desk":
                         while True:
                             fake_type(
-                                "You walk over to the desk, it is covered in scratches and goucges. There are two drawers on the front of the desk, one on the left and one on the right.")
+                                "You walk over to the desk, it is covered in scratches and gouges. There are two drawers on the front of the desk, one on the left and one on the right.")
                             fake_type(
                                 "Would you like to open the 'left drawer', 'right drawer', or 'go back'?")
                             Choice3 = input("> ").lower()

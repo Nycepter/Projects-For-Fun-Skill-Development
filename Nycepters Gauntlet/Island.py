@@ -48,10 +48,10 @@ def Island_Game():
                                 "\nAs you turn the key, the lock drops away revealing a screen that has an equation and a place for you to enter an answer.")
                             fake_type("The equation is (4x3-6+1)3(12÷6+1).")
                             fake_type(
-                                "Would you like to 'enter an answer' or 'go back'?")
+                                "Would you like to 'answer' or 'go back'?")
                             Choice1_A_2 = input("> ")
                             clear_console()
-                            if Choice1_A_2 == "enter an answer":
+                            if Choice1_A_2 == "answer":
                                 fake_type(
                                     "\nWhat is your answer?")
                                 Answer = input("> ")
