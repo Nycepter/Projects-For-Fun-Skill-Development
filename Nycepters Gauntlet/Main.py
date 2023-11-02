@@ -14,12 +14,10 @@ from Functions import clear_console
 from Horror import Haunted_School
 
 Run_Intro()
-if Player.Name.lower() == "robbie" or Player.Name.lower() == "jacob":
-    Haunted_School()
-else:
-    Island_Game()
-    RPS()
-    Connect_Four()
-    Haunted_School()
+Haunted_School()
+Island_Game()
+RPS()
+Connect_Four()
+Haunted_School()
 
 print("To be continued...")
