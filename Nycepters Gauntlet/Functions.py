@@ -363,12 +363,11 @@ def Hangman():
                     if Guess == Word_Bank_Choice:
                         Wins += 1
                         print("That is the correct answer!")
+
                         print("You Win!")
-                        print(f"Wins: {Wins}")
-                        print(f"Loses: {Loses}")
-                        print(f"Lives: {Lives}\n")
-                        Reset = True
-                        break
+                        print(f"The word was {Word_Bank_Choice}")
+                        result = Word_Bank_Choice
+                        return result
                     else:
                         print(f"{Guess} is present in the word")
                         print("\n")
