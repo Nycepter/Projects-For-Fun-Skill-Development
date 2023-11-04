@@ -14,7 +14,6 @@ from Functions import clear_console
 from Horror import Haunted_School
 
 Run_Intro()
-Haunted_School()
 Island_Game()
 RPS()
 Connect_Four()
