@@ -3,7 +3,7 @@ import random
 import sys
 import textwrap
 import os
-from Intro import Player
+from Intro import Player, Set_High_Score
 from Functions import fake_type
 from Functions import clear_console
 from Functions import Hangman
@@ -298,6 +298,7 @@ def Haunted_School():
                                             fake_type(
                                                 "The password is correct, the door unlocks.")
                                             Exit_Unlocked = True
+
                                             break
                                         else:
                                             fake_type(
@@ -332,6 +333,9 @@ def Haunted_School():
                                         if Password_attempt == Password:
                                             fake_type(
                                                 "The password is correct, the door unlocks.")
+                                            if Exit_Unlocked == False:
+                                                if Player.Score < 1210:
+                                                    Set_High_Score(500)
                                             Exit_Unlocked = True
                                             break
                                         else:

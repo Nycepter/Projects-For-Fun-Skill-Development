@@ -2,7 +2,7 @@ import time
 import random
 import sys
 import textwrap
-from Intro import Player
+from Intro import Player, Set_High_Score
 from Functions import fake_type
 import os
 import subprocess
@@ -13,9 +13,11 @@ def RPS():
     fake_type(f"\n\n\nLook at that, {Player.Name}! You are awake now!!!")
     fake_type("I hope your dreams were pleasant.")
     fake_type(
-        "As you look around you can see that you are alone in an empty room with only one door.")
+        "As you look around you can see that you are alone in an empty room with only one door."
+    )
     fake_type(
-        "If you want the door to open, you will have to beat me in a game of Rock, Paper, Scissors!")
+        "If you want the door to open, you will have to beat me in a game of Rock, Paper, Scissors!"
+    )
     fake_type(f"Alright, lets go, {Player.Name} vs Nycepter!")
     Exposed = False
 
@@ -118,4 +120,6 @@ def RPS():
                 continue
             elif "cheat" in User_Choice or "cheater" in User_Choice or "cheating" in User_Choice:
                 Exposed = True
+                if Player.Score < 410:
+                    Set_High_Score(200)
                 break

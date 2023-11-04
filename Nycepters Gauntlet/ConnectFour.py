@@ -2,7 +2,7 @@ import time
 import random
 import sys
 import textwrap
-from Intro import Player
+from Intro import Player, Set_High_Score
 from Functions import fake_type
 import os
 import subprocess
@@ -96,6 +96,8 @@ def Connect_Four():
                         continue
 
                     if Passed1 == True and Passed2 == True and Passed3 == True and Passed4 == True and Passed5 == True:
+                        if Player.Score < 610:
+                          Set_High_Score(200)
                         fake_type(
                             "You passed all the tests, the portal is now ready to use.")
                         fake_type("Would you like to go through the portal?")
@@ -895,6 +897,8 @@ def Connect_Four():
                                 break
             fake_type("Congratulations! The box is now unlocked.")
             fake_type("Inside the box is a heavy keycard that says: Portal Key.")
+            if Player.Score < 710:
+              Set_High_Score(100)
             Has_Portal_Key = True
             fake_type("I will take you back to the beginning now.")
             continue

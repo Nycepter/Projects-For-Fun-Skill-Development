@@ -6,6 +6,7 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
+from replit import db
 
 
 class Player:
@@ -13,10 +14,27 @@ class Player:
     Age = 0
     Height = 0
     Gender = ""
+    Score = 0
+
+
+Player.Name = ("")
+
+
+def Set_High_Score(score):
+    if Player.Name != "Aaron":
+        Player.Score += score
+        if db[f"{Player.Name}"] < Player.Score:
+            db[f"{Player.Name}"] = Player.Score
+
+
+def Show_High_Scores():
+    for key in db.keys():
+        print(f"{key}. {db[key]}")
 
 
 def Run_Intro():
-    Intro = """ _   _                      _            _       _____                   _   _      _   
+    Intro = """ 
+ _   _                      _            _       _____                   _   _      _   
 | \ | |                    | |          ( )     |  __ \                 | | | |    | |  
 |  \| |_   _  ___ ___ _ __ | |_ ___ _ __|/ ___  | |  \/ __ _ _   _ _ __ | |_| | ___| |_ 
 | . ` | | | |/ __/ _ \ '_ \| __/ _ \ '__| / __| | | __ / _` | | | | '_ \| __| |/ _ \ __|
@@ -27,12 +45,25 @@ def Run_Intro():
 """
 
     fake_type(
-        '\n\nPlease wait for the " > " to appear before typing your answers during the game.')
+        '\n\nPlease wait for the " > " to appear before typing your answers during the game.    \nIf you need to copy or paste something, right click. Do not use CTRL+C or CTRL+V as it will cause an input error'
+    )
     fake_type(
         "\n\n\n Hello there... Before we get started, please tell me your name.")
 
     Player.Name = input("> ")
+    if Player.Name in db.keys():
+        print(f"Welcome back, {Player.Name}.\n")
+        print("High Scores:")
+        Show_High_Scores()
+        fake_type("Please press enter to continue...")
+        input("> ")
+        clear_console()
+
+        return
+    db[f"{Player.Name}"] = 0
+
     clear_console()
+    Set_High_Score(10)
     fake_type("That is a stupid name, I think I will call you Bob.")
     fake_type(f"I am just kidding {Player.Name}, that is a good name!")
     fake_type("Just a few more questions and then we can get the ball rolling.")
@@ -60,12 +91,14 @@ def Run_Intro():
     fake_type(
         f"\n Thank you {Player.Name}, I would now like to welcome you to:")
     print(Intro)
-
+    print("High Scores:")
+    Show_High_Scores()
     fake_type(
         f"\n\n\n I already know your name {Player.Name}, my name is Nycepter.")
     fake_type("I have a series of challenges for you!")
     fake_type(
-        "But alas, you are currently in a strange place and need to find your way out.\n\n\n")
+        "But alas, you are currently in a strange place and need to find your way out.\n\n\n"
+    )
     fake_type("Please press enter to continue...")
     input("> ")
     clear_console()
