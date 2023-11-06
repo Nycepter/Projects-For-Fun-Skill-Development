@@ -1,4 +1,4 @@
-import time
+
 import random
 import sys
 import textwrap
@@ -12,7 +12,10 @@ import os
 import subprocess
 from Functions import clear_console
 from Horror import Haunted_School
-from replit import db
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 
 
 def Load_Game(name):

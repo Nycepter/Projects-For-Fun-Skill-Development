@@ -1,3 +1,4 @@
+import pickle
 import time
 import random
 import sys
@@ -6,8 +7,10 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
-from replit import db
 from prettytable import PrettyTable
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 
 
 class Player:
@@ -138,4 +141,5 @@ def Run_Intro():
     input("> ")
     clear_console()
     db[Player.Name]["Completed"] += 1
+    SaveData()
     return

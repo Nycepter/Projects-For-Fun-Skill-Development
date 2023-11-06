@@ -7,7 +7,10 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
-from replit import db
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 
 
 def RPS():
@@ -125,4 +128,5 @@ def RPS():
                 db[Player.Name]["Completed"] += 1
                 if Player.Score < 410:
                     Set_High_Score(200)
+                    SaveData()
                 break

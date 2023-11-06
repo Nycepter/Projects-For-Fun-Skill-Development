@@ -11,8 +11,13 @@ from Functions import alphabet
 from Functions import encrypt
 from Functions import decrypt
 from Functions import encrypt2
-from replit import db
-
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 # fake_type(input("\n> ").lower())
 
 
@@ -372,6 +377,7 @@ def Haunted_School():
                                             if Exit_Unlocked == False:
                                                 if Player.Score < 1210:
                                                     Set_High_Score(500)
+                                                    SaveData()
                                             Exit_Unlocked = True
                                             break
                                         else:

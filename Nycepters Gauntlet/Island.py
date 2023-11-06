@@ -7,7 +7,10 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
-from replit import db
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 
 
 def Island_Game():
@@ -69,6 +72,7 @@ def Island_Game():
                                 if Answer == "2":
                                     if Player.Score < 210:
                                         Set_High_Score(100)
+                                        SaveData()
                                     fake_type(
                                         "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!"
                                     )
@@ -103,6 +107,7 @@ def Island_Game():
                         if Answer == "2":
                             if Player.Score < 210:
                                 Set_High_Score(100)
+                                SaveData()
                             fake_type(
                                 "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!"
                             )
@@ -159,6 +164,7 @@ def Island_Game():
                     if Response == "that is the question":
                         if Player.Score < 110:
                             Set_High_Score(100)
+                            SaveData()
                         fake_type(
                             "\nThe door opens! The room is empty except for a key laying in the middle"
                         )

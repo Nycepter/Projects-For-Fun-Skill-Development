@@ -7,7 +7,13 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
-from replit import db
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
 
 
 def Connect_Four():
@@ -101,6 +107,7 @@ def Connect_Four():
                         db[Player.Name]["Completed"] += 1
                         if Player.Score < 610:
                             Set_High_Score(200)
+                            SaveData()
                         fake_type(
                             "You passed all the tests, the portal is now ready to use.")
                         fake_type("Would you like to go through the portal?")
@@ -902,6 +909,7 @@ def Connect_Four():
             fake_type("Inside the box is a heavy keycard that says: Portal Key.")
             if Player.Score < 710:
                 Set_High_Score(100)
+                SaveData()
             Has_Portal_Key = True
             fake_type("I will take you back to the beginning now.")
             continue

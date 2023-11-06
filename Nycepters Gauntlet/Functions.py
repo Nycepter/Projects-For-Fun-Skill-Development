@@ -4,7 +4,28 @@ import sys
 import textwrap
 import os
 import subprocess
-from replit import db
+import pickle
+
+
+def SaveData():
+    try:
+        with open('database.pkl', 'wb') as f:
+            pickle.dump(db, f)
+        print("Data saved successfully.")
+    except Exception as e:
+        print("Failed to save data:", e)
+
+
+def LoadData():
+    if os.path.exists('database.pkl'):
+        with open('database.pkl', 'rb') as f:
+            return pickle.load(f)
+    else:
+        print("No saved data found.")
+        return {}
+
+
+db = LoadData()
 
 
 def clear_console():
@@ -14,10 +35,10 @@ def clear_console():
 def fake_type(words):
     words += "\n"
     for char in words:
-        time.sleep(random.choice([0.01, 0.03, 0.05, 0.03]))
+        time.sleep(random.choice([0]))
         sys.stdout.write(char)
         sys.stdout.flush()
-    time.sleep(0.5)
+    time.sleep(0)
 
 
 def Hangman():
