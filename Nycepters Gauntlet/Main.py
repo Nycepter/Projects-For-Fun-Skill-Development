@@ -17,20 +17,41 @@ from replit import db
 
 def Load_Game(name):
     for key in db.keys():
-        if key == name and db[key] < 200:
-            Player.Score = db[key]
+        if key == name and db[Player.Name]["Completed"] == 1:
+            Player.Score = db[key]["Score"]
+            Player.Age = db[key]["Age"]
+            Player.Height = db[key]["Height"]
+            Player.Gender = db[key]["Gender"]
             Island_Game()
-        elif key == name and 200 < db[key] < 400:
-            Player.Score = db[key]
             RPS()
-        elif key == name and 400 < db[key] < 700:
-            Player.Score = db[key]
             Connect_Four()
-        elif key == name and 700 < db[key] < 1200:
-            Player.Score = db[key]
             Haunted_School()
-        elif key == name and 1200 < db[key] < 2000:
-            Player.Score = db[key]
+        elif key == name and db[Player.Name]["Completed"] == 2:
+            Player.Score = db[key]["Score"]
+            Player.Age = db[key]["Age"]
+            Player.Height = db[key]["Height"]
+            Player.Gender = db[key]["Gender"]
+            RPS()
+            Connect_Four()
+            Haunted_School()
+        elif key == name and db[Player.Name]["Completed"] == 3:
+            Player.Score = db[key]["Score"]
+            Player.Age = db[key]["Age"]
+            Player.Height = db[key]["Height"]
+            Player.Gender = db[key]["Gender"]
+            Connect_Four()
+            Haunted_School()
+        elif key == name and db[Player.Name]["Completed"] == 4:
+            Player.Score = db[key]["Score"]
+            Player.Age = db[key]["Age"]
+            Player.Height = db[key]["Height"]
+            Player.Gender = db[key]["Gender"]
+            Haunted_School()
+        elif key == name and db[Player.Name]["Completed"] == 5:
+            Player.Score = db[key]["Score"]
+            Player.Age = db[key]["Age"]
+            Player.Height = db[key]["Height"]
+            Player.Gender = db[key]["Gender"]
             print("You will have to wait for the next chapter.")
 
 

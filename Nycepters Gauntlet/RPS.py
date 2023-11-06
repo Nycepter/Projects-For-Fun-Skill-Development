@@ -7,9 +7,11 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
+from replit import db
 
 
 def RPS():
+
     fake_type(f"\n\n\nLook at that, {Player.Name}! You are awake now!!!")
     fake_type("I hope your dreams were pleasant.")
     fake_type(
@@ -120,6 +122,7 @@ def RPS():
                 continue
             elif "cheat" in User_Choice or "cheater" in User_Choice or "cheating" in User_Choice:
                 Exposed = True
+                db[Player.Name]["Completed"] += 1
                 if Player.Score < 410:
                     Set_High_Score(200)
                 break

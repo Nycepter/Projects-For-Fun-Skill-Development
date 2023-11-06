@@ -7,6 +7,7 @@ import os
 import subprocess
 from Functions import clear_console
 from replit import db
+from prettytable import PrettyTable
 
 
 class Player:
@@ -15,6 +16,8 @@ class Player:
     Height = 0
     Gender = ""
     Score = 0
+    Completed = 0
+    Password = ""
 
 
 Player.Name = ("")
@@ -23,13 +26,17 @@ Player.Name = ("")
 def Set_High_Score(score):
     if Player.Name != "Aaron":
         Player.Score += score
-        if db[f"{Player.Name}"] < Player.Score:
-            db[f"{Player.Name}"] = Player.Score
+        if db[f"{Player.Name}"]["Score"] < Player.Score:
+            db[f"{Player.Name}"]["Score"] = Player.Score
 
 
 def Show_High_Scores():
-    for key in db.keys():
-        print(f"{key}. {db[key]}")
+    table = PrettyTable()
+    table.field_names = ["Name", "Score"]
+    sorted_keys = sorted(db.keys(), key=lambda x: db[x]['Score'], reverse=True)
+    for key in sorted_keys:
+        table.add_row([key, db[key]['Score']])
+    print(table)
 
 
 def Run_Intro():
@@ -45,43 +52,71 @@ def Run_Intro():
 """
 
     fake_type(
-        '\n\nPlease wait for the " > " to appear before typing your answers during the game.    \nIf you need to copy or paste something, right click. Do not use CTRL+C or CTRL+V as it will cause an input error'
+        '\n\nPlease wait for the " > " to appear before typing your answers during the game.    \nIf you need to copy or paste something, right click. Do not use CTRL+C or CTRL+V as it will cause an input error.'
     )
-    fake_type(
-        "\n\n\n Hello there... Before we get started, please tell me your name.")
+    while True:
+        fake_type(
+            "\n\n\n Hello there... Before we get started, please enter your username."
+        )
 
-    Player.Name = input("> ")
-    if Player.Name in db.keys():
-        print(f"Welcome back, {Player.Name}.\n")
-        print("High Scores:")
-        Show_High_Scores()
-        fake_type("Please press enter to continue...")
-        input("> ")
-        clear_console()
+        Player.Name = input("> ")
+        if Player.Name in db.keys():
+            fake_type(
+                "I see you have played before, please enter your password. If you have have not played before, this username is taken, please use a different one."
+            )
+            login = input("> ")
+            if login == db[Player.Name]["Password"]:
+                print(f"Welcome back, {Player.Name}.\n")
+                print("High Scores:")
+                Show_High_Scores()
+                fake_type("Please press enter to continue...")
+                input("> ")
+                clear_console()
+                return
+            else:
+                print("Incorrect password.")
+                continue
+        else:
+            break
 
-        return
-    db[f"{Player.Name}"] = 0
+    db[f"{Player.Name}"] = {
+        'Age': 0,
+        'Height': 0,
+        'Gender': "",
+        'Score': 0,
+        'Completed': 0,
+        'Password': ""
+    }
 
     clear_console()
     Set_High_Score(10)
     fake_type("That is a stupid name, I think I will call you Bob.")
     fake_type(f"I am just kidding {Player.Name}, that is a good name!")
     fake_type("Just a few more questions and then we can get the ball rolling.")
+    fake_type("Please create a password.")
+    db[Player.Name]["Password"] = input("> ")
     fake_type("What is your age in years?")
     Player.Age = int(input("> "))
+    db[f"{Player.Name}"]["Age"] = Player.Age
     clear_console()
     while Player.Age < 10 or Player.Age > 90:
         fake_type("Please provide a valid age...")
         Player.Age = int(input("> "))
-    fake_type("What is your height in inches?")
-    Player.Height = int(input("> "))
-    clear_console()
-    while Player.Height < 30 or Player.Height > 72:
-        fake_type("Please provide a valid height...")
+    try:
+        fake_type("What is your height in inches?")
         Player.Height = int(input("> "))
+        db[f"{Player.Name}"]["Height"] = Player.Height
+        clear_console()
+        while Player.Height < 30 or Player.Height > 72:
+            fake_type("Please provide a valid height...")
+            Player.Height = int(input("> "))
+    except:
+        fake_type(
+            "Input Error, please only put in inches. i.e. 5 foot 5 is 65 inches.")
 
     fake_type("Are you male, or female?")
     Player.Gender = (input("> "))
+    db[f"{Player.Name}"]["Gender"] = Player.Gender
     clear_console()
     Player.Gender = Player.Gender.lower()
     while Player.Gender != "male" and Player.Gender != "female":
@@ -102,5 +137,5 @@ def Run_Intro():
     fake_type("Please press enter to continue...")
     input("> ")
     clear_console()
-    result = [Player.Age, Player.Name, Player.Height, Player.Gender]
-    return result
+    db[Player.Name]["Completed"] += 1
+    return

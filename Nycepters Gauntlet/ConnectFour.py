@@ -7,9 +7,11 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
+from replit import db
 
 
 def Connect_Four():
+
     fake_type("Dang, you caught me! You are more observant than I expected, this will be a fun game... You now have a choice to make.")
     fake_type("The door opens, revealing a hallway that splits left and right. Directly in front of you is a hole in the wall that seems to be a tunnel to somewhere.")
     Has_Portal_Key = False
@@ -96,8 +98,9 @@ def Connect_Four():
                         continue
 
                     if Passed1 == True and Passed2 == True and Passed3 == True and Passed4 == True and Passed5 == True:
+                        db[Player.Name]["Completed"] += 1
                         if Player.Score < 610:
-                          Set_High_Score(200)
+                            Set_High_Score(200)
                         fake_type(
                             "You passed all the tests, the portal is now ready to use.")
                         fake_type("Would you like to go through the portal?")
@@ -898,7 +901,7 @@ def Connect_Four():
             fake_type("Congratulations! The box is now unlocked.")
             fake_type("Inside the box is a heavy keycard that says: Portal Key.")
             if Player.Score < 710:
-              Set_High_Score(100)
+                Set_High_Score(100)
             Has_Portal_Key = True
             fake_type("I will take you back to the beginning now.")
             continue

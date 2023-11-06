@@ -7,9 +7,11 @@ from Functions import fake_type
 import os
 import subprocess
 from Functions import clear_console
+from replit import db
 
 
 def Island_Game():
+
     Awake = False
     while Awake == False:
 
@@ -77,6 +79,7 @@ def Island_Game():
                                         "Evidently you could have imagined it in your wildest dreams..."
                                     )
                                     Awake = True
+                                    db[Player.Name]["Completed"] += 1
                                     break
                                 else:
                                     fake_type(
@@ -110,6 +113,7 @@ def Island_Game():
                                 "Evidently you could have imagined it in your wildest dreams..."
                             )
                             Awake = True
+                            db[Player.Name]["Completed"] += 1
                             break
                         else:
                             fake_type(
