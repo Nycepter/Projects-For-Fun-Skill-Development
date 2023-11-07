@@ -18,6 +18,8 @@ import pickle
 from Functions import SaveData
 from Functions import LoadData
 from Functions import db
+import sqlite3
+import mysql.connector
 # fake_type(input("\n> ").lower())
 
 

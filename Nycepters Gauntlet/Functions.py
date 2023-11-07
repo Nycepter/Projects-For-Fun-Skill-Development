@@ -5,6 +5,8 @@ import textwrap
 import os
 import subprocess
 import pickle
+import sqlite3
+import mysql.connector
 
 
 def SaveData():

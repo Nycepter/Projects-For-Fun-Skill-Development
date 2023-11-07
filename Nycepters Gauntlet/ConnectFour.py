@@ -14,8 +14,8 @@ import pickle
 from Functions import SaveData
 from Functions import LoadData
 from Functions import db
-
-
+import sqlite3
+import mysql.connector
 def Connect_Four():
 
     fake_type("Dang, you caught me! You are more observant than I expected, this will be a fun game... You now have a choice to make.")

@@ -11,6 +11,8 @@ from prettytable import PrettyTable
 from Functions import SaveData
 from Functions import LoadData
 from Functions import db
+import sqlite3
+import mysql.connector
 
 
 class Player:
