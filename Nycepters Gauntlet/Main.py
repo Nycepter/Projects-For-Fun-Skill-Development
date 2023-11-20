@@ -18,6 +18,8 @@ from Functions import LoadData
 from Functions import db
 import sqlite3
 import mysql.connector
+import snake_main
+from snake_main import main as Snake_Game
 
 
 def Load_Game(name):
@@ -31,6 +33,9 @@ def Load_Game(name):
             RPS()
             Connect_Four()
             Haunted_School()
+            Snake_Game()
+            print("You will have to wait for the next chapter.")
+
         elif key == name and db[Player.Name]["Completed"] == 2:
             Player.Score = db[key]["Score"]
             Player.Age = db[key]["Age"]
@@ -39,6 +44,8 @@ def Load_Game(name):
             RPS()
             Connect_Four()
             Haunted_School()
+            Snake_Game()
+            print("You will have to wait for the next chapter.")
         elif key == name and db[Player.Name]["Completed"] == 3:
             Player.Score = db[key]["Score"]
             Player.Age = db[key]["Age"]
@@ -46,17 +53,22 @@ def Load_Game(name):
             Player.Gender = db[key]["Gender"]
             Connect_Four()
             Haunted_School()
+            Snake_Game()
+            print("You will have to wait for the next chapter.")
         elif key == name and db[Player.Name]["Completed"] == 4:
             Player.Score = db[key]["Score"]
             Player.Age = db[key]["Age"]
             Player.Height = db[key]["Height"]
             Player.Gender = db[key]["Gender"]
             Haunted_School()
+            Snake_Game()
+            print("You will have to wait for the next chapter.")
         elif key == name and db[Player.Name]["Completed"] == 5:
             Player.Score = db[key]["Score"]
             Player.Age = db[key]["Age"]
             Player.Height = db[key]["Height"]
             Player.Gender = db[key]["Gender"]
+            Snake_Game()
             print("You will have to wait for the next chapter.")
 
 

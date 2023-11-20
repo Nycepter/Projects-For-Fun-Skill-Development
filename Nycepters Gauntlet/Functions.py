@@ -11,7 +11,7 @@ import mysql.connector
 
 def SaveData():
     try:
-        with open('Projects-For-Fun-Skill-Development\Nycepters Gauntlet\database.db', 'wb') as f:
+        with open('C:/Users/Nycepter/Documents/GitHub/database.pkl', 'wb') as f:
             pickle.dump(db, f)
         print("Data saved successfully.")
     except Exception as e:
@@ -19,12 +19,13 @@ def SaveData():
 
 
 def LoadData():
-    if os.path.exists('Projects-For-Fun-Skill-Development\Nycepters Gauntlet\database.db'):
-        with open('Projects-For-Fun-Skill-Development\Nycepters Gauntlet\database.db', 'rb') as f:
-            return pickle.load(f)
-    else:
-        print("No saved data found.")
-        return {}
+    if os.path.exists('C:/Users/Nycepter/Documents/GitHub/database.pkl'):
+        try:
+            with open('C:/Users/Nycepter/Documents/GitHub/database.pkl', 'rb') as f:
+                return pickle.load(f)
+        except:
+            print("No saved data found.")
+            return {}
 
 
 db = LoadData()
