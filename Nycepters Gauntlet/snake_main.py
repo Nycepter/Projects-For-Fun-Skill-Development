@@ -12,7 +12,7 @@ from Functions import fake_type, clear_console
 
 
 def main():
-    fake_type("Can you get a score of 20? Lets find out...")
+    fake_type("Can you get a score of 40? Lets find out...")
     fake_type("Please press enter to continue...")
     input("> ")
     clear_console()
