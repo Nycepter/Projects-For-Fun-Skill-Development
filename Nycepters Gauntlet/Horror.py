@@ -285,6 +285,7 @@ def Haunted_School():
                     clear_console()
                     if Choice14 == "yes":
                         db[Player.Name]["Completed"] += 1
+                        SaveData()
                         return
                     else:
                         continue

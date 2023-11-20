@@ -37,10 +37,13 @@ def Set_High_Score(score):
 
 def Show_High_Scores():
     table = PrettyTable()
-    table.field_names = ["Name", "Score"]
+    table.field_names = ["Name", "Score", "Completed"]
     sorted_keys = sorted(db.keys(), key=lambda x: db[x]['Score'], reverse=True)
+    sorted_keys = sorted(
+        db.keys(), key=lambda x: db[x]['Completed'], reverse=True)
     for key in sorted_keys:
-        table.add_row([key, db[key]['Score']])
+        table.add_row([key, db[key]['Score'], db[key]['Completed']])
+
     print(table)
 
 

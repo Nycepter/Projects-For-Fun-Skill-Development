@@ -3,9 +3,19 @@ from turtle import Turtle, Screen
 import time
 from snake import Snake
 from score import Score, score
+import pickle
+from Functions import SaveData
+from Functions import LoadData
+from Functions import db
+from Intro import Player, Set_High_Score
+from Functions import fake_type, clear_console
 
 
 def main():
+    fake_type("Can you get a score of 20? Lets find out...")
+    fake_type("Please press enter to continue...")
+    input("> ")
+    clear_console()
     # Screen settings
     screen = Screen()
     screen.setup(600, 600)
@@ -31,7 +41,12 @@ def main():
     screen.onkey(snake.right, "d")
 
     # Game loop
-    while user_score.score < 20:
+    while game_is_on == True:
+        if user_score.score == 5:
+            db[Player.Name]["Completed"] += 1
+            Set_High_Score(300)
+            SaveData()
+            game_is_on = False
 
         screen.update()
         time.sleep(.1)
@@ -52,7 +67,7 @@ def main():
                 user_score.reset()
                 snake.reset()
 
-    screen.exitonclick()
+    screen.bye()
 
 
 if __name__ == "__main__":

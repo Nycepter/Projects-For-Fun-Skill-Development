@@ -74,5 +74,7 @@ def Load_Game(name):
 
 Run_Intro()
 Load_Game(Player.Name)
-
+if Player.Name == "Test":
+    db[Player.Name]["Completed"] = 5
+    SaveData()
 print("To be continued...")
