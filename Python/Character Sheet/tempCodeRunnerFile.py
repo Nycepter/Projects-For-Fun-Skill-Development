@@ -1,1 +1,1 @@
-90
+level_spinbox.set(0)

@@ -33,8 +33,9 @@ def main():
 
     
 #---------------------TABS
-    tab1 = tabs.add("Tab 1")
-    tab2 = tabs.add("Tab 2")
+    tab1 = tabs.add("Main")
+    tab2 = tabs.add("Inventory")
+
 
 
 
@@ -50,6 +51,8 @@ def main():
 
     level_frame = ctk.CTkFrame(tab1, width=1490, height=17, corner_radius=20)
     level_frame.place(x=10, y=90)
+
+
 
 
 
@@ -144,7 +147,26 @@ def main():
 
     background_listbox2 = ctk.CTkComboBox(details_frame2, values= backgrounds, state="readonly", width=150)
     background_listbox2.place(x=380, y=5)
+    #--------
+    race_name_label2 = ctk.CTkLabel(details_frame2, text="RACE:", fg_color="#1f6aa5", corner_radius=20)
+    race_name_label2.place(x=260, y=40)
 
+    race_listbox2 = ctk.CTkComboBox(details_frame2, values= races, state="readonly", width=202)
+    race_listbox2.place(x=328, y=40)
+    #------
+    level_label2 = ctk.CTkLabel(details_frame2, text="LEVEL:", fg_color="#1f6aa5", corner_radius=20)
+    level_label2.place(x=535, y=5)
+
+    level_spinbox2 = IntSpinbox(details_frame2, width=100, step_size=1)
+    level_spinbox2.place(x=607, y=5)
+    level_spinbox2.set(0)
+    #------
+    exp_label2 = ctk.CTkLabel(details_frame2, text="EXP:", fg_color="#1f6aa5", corner_radius=20)
+    exp_label2.place(x=535, y=40)
+
+    exp_total2 = ctk.CTkEntry(details_frame2, fg_color="#343638", corner_radius=20, width=115)
+    exp_total2.place(x=595, y=40)
+    #-------
 
 
     root.mainloop()
