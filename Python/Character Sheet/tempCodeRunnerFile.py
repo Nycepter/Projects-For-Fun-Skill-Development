@@ -1,1 +1,6 @@
-level_spinbox.set(0)
+    # str_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    # str_frame.place(x=10, y=112)
+    # str_tab = str_frame.add("STR:")
+    # str_frame._segmented_button.configure(corner_radius=10)
+    # str_tab_frame = ctk.CTkFrame(str_tab, width=60, height=100, corner_radius=20)
+    # str_tab_frame.place(x=0, y=0)
