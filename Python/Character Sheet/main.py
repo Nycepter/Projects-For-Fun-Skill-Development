@@ -2,6 +2,7 @@ import tkinter as tk
 import customtkinter as ctk
 from tkinter import *
 import sqlite3
+from functions import *
 
 
 ctk.set_appearance_mode("Dark")
@@ -27,6 +28,7 @@ def main():
     classes = ["Test 1", "Test 2"]
     subclasses = ["Test 1", "Test 2"]
     backgrounds = ["Test 1", "Test 2"]
+    races = ["Test 1", "Test 2"]
     
 
     
@@ -45,6 +47,12 @@ def main():
 
     details_frame1 = ctk.CTkFrame(tab1, width=720, height=75, corner_radius=20)
     details_frame1.place(x=780, y=10)
+
+    level_frame = ctk.CTkFrame(tab1, width=1490, height=17, corner_radius=20)
+    level_frame.place(x=10, y=90)
+
+
+
 
 
 #--------------------TAB 2 FRAMES
@@ -88,6 +96,36 @@ def main():
 
     background_listbox = ctk.CTkComboBox(details_frame1, values= backgrounds, state="readonly", width=150)
     background_listbox.place(x=380, y=5)
+    #--------
+    race_name_label = ctk.CTkLabel(details_frame1, text="RACE:", fg_color="#1f6aa5", corner_radius=20)
+    race_name_label.place(x=260, y=40)
+
+    race_listbox = ctk.CTkComboBox(details_frame1, values= races, state="readonly", width=202)
+    race_listbox.place(x=328, y=40)
+    #------
+    level_label = ctk.CTkLabel(details_frame1, text="LEVEL:", fg_color="#1f6aa5", corner_radius=20)
+    level_label.place(x=535, y=5)
+
+    level_spinbox = IntSpinbox(details_frame1, width=100, step_size=1)
+    level_spinbox.place(x=607, y=5)
+    level_spinbox.set(0)
+    #------
+    exp_label = ctk.CTkLabel(details_frame1, text="EXP:", fg_color="#1f6aa5", corner_radius=20)
+    exp_label.place(x=535, y=40)
+
+    exp_total = ctk.CTkEntry(details_frame1, fg_color="#343638", corner_radius=20, width=115)
+    exp_total.place(x=595, y=40)
+    #-------
+
+
+#------------------------LEVEL FRAME    
+    level_prgress_bar = ctk.CTkProgressBar(level_frame, width=1470, progress_color="#9B902B")
+    level_prgress_bar.place(x=10, y=4)
+
+
+
+
+
     #----------------------------------------------------------------- TAB 2
     class_name_label2 = ctk.CTkLabel(details_frame2, text="CLASS:", fg_color="#1f6aa5", corner_radius=20)
     class_name_label2.place(x=5, y=5)
