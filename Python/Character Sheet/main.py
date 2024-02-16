@@ -73,9 +73,14 @@ def main():
     #-----CHA
     cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
     cha_frame.place(x=10, y=612)
+    #-----SAVING THROW
+    # savethrow_frame = ctk.CTkTabview(tab1, width=220, height=250, corner_radius=20, fg_color="#2b2b2b", state="active")
+    # savethrow_frame.place(x=330, y=112)
+    #-----SKILLS
+    skills_frame = ctk.CTkTabview(tab1, width=220, height=610, corner_radius=20, fg_color="#2b2b2b")
+    skills_frame.place(x=90, y=112)
 
-
-    st_frame = ctk.CT
+    
 
 
 
@@ -233,6 +238,197 @@ def main():
     cha_mod.place(x=0, y=0)
     cha_total = ctk.CTkEntry(cha_frame, width=40, height=15, corner_radius=20, border_width=1)
     cha_total.place(x=10, y=70)
+
+
+#---------------------------SKILLS FRAME
+    skills_tab = skills_frame.add("SKILLS")
+    skills_frame._segmented_button.configure(corner_radius=20)
+    skills_tab_frame = ctk.CTkFrame(skills_tab, width=220, height=610, corner_radius=20)
+    skills_tab_frame.place(x=0, y=0)
+    #--------ACROBATICS
+    acrobatics_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    acrobatics_checkbox.configure(fg_color ="#343638")
+    acrobatics_checkbox.place(x=0, y=0)
+    acrobatics_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    acrobatics_text.place(x=30, y=0)
+    acrobatics_button = ctk.CTkButton(skills_tab_frame, text="Acrobatics", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    acrobatics_button.place(x=55, y=0)
+    #--------ANIMAL HANDLING
+    animal_handling_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    animal_handling_checkbox.configure(fg_color ="#343638")
+    animal_handling_checkbox.place(x=0, y=30)
+    animal_handling_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    animal_handling_text.place(x=30, y=30)
+    animal_handling_button = ctk.CTkButton(skills_tab_frame, text="Animal Handling", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    animal_handling_button.place(x=55, y=30)
+    #--------ARCANA
+    arcana_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    arcana_checkbox.configure(fg_color ="#343638")
+    arcana_checkbox.place(x=0, y=60)
+    arcana_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    arcana_text.place(x=30, y=60)
+    arcana_button = ctk.CTkButton(skills_tab_frame, text="Arcana", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    arcana_button.place(x=55, y=60)
+    #--------ATHLETICS
+    athletics_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    athletics_checkbox.configure(fg_color ="#343638")
+    athletics_checkbox.place(x=0, y=90)
+    athletics_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    athletics_text.place(x=30, y=90)
+    athletics_button = ctk.CTkButton(skills_tab_frame, text="Athletics", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    athletics_button.place(x=55, y=90)
+    #--------DECEPTION
+    deception_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    deception_checkbox.configure(fg_color ="#343638")
+    deception_checkbox.place(x=0, y=120)
+    deception_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    deception_text.place(x=30, y=120)
+    deception_button = ctk.CTkButton(skills_tab_frame, text="Deception", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    deception_button.place(x=55, y=120)
+    #--------HISTORY
+    history_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    history_checkbox.configure(fg_color ="#343638")
+    history_checkbox.place(x=0, y=150)
+    history_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    history_text.place(x=30, y=150)
+    history_button = ctk.CTkButton(skills_tab_frame, text="History", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    history_button.place(x=55, y=150)
+    #--------INSIGHT
+    insight_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    insight_checkbox.configure(fg_color ="#343638")
+    insight_checkbox.place(x=0, y=180)
+    insight_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    insight_text.place(x=30, y=180)
+    insight_button = ctk.CTkButton(skills_tab_frame, text="Insight", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    insight_button.place(x=55, y=180)
+    #--------INTIMIDATION
+    intimidation_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    intimidation_checkbox.configure(fg_color ="#343638")
+    intimidation_checkbox.place(x=0, y=210)
+    intimidation_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    intimidation_text.place(x=30, y=210)
+    intimidation_button = ctk.CTkButton(skills_tab_frame, text="Intimidation", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    intimidation_button.place(x=55, y=210)
+    #--------INVESTIGATION
+    investigation_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    investigation_checkbox.configure(fg_color ="#343638")
+    investigation_checkbox.place(x=0, y=240)
+    investigation_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    investigation_text.place(x=30, y=240)
+    investigation_button = ctk.CTkButton(skills_tab_frame, text="Investigation", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    investigation_button.place(x=55, y=240)
+    #--------MEDICINE
+    medicine_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    medicine_checkbox.configure(fg_color ="#343638")
+    medicine_checkbox.place(x=0, y=270)
+    medicine_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    medicine_text.place(x=30, y=270)
+    medicine_button = ctk.CTkButton(skills_tab_frame, text="Medicine", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    medicine_button.place(x=55, y=270)
+    #--------NATURE
+    nature_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    nature_checkbox.configure(fg_color ="#343638")
+    nature_checkbox.place(x=0, y=300)
+    nature_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    nature_text.place(x=30, y=300)
+    nature_button = ctk.CTkButton(skills_tab_frame, text="Nature", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    nature_button.place(x=55, y=300)
+    #--------PERCEPTION
+    perception_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    perception_checkbox.configure(fg_color ="#343638")
+    perception_checkbox.place(x=0, y=330)
+    perception_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    perception_text.place(x=30, y=330)
+    perception_button = ctk.CTkButton(skills_tab_frame, text="Perception", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    perception_button.place(x=55, y=330)
+    #--------PERFORMANCE
+    performance_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    performance_checkbox.configure(fg_color ="#343638")
+    performance_checkbox.place(x=0, y=360)
+    performance_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    performance_text.place(x=30, y=360)
+    performance_button = ctk.CTkButton(skills_tab_frame, text="Performance", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    performance_button.place(x=55, y=360)
+    #--------PERSUASION
+    persuasion_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    persuasion_checkbox.configure(fg_color ="#343638")
+    persuasion_checkbox.place(x=0, y=390)
+    persuasion_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    persuasion_text.place(x=30, y=390)
+    persuasion_button = ctk.CTkButton(skills_tab_frame, text="Persuasion", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    persuasion_button.place(x=55, y=390)
+    #--------RELIGION
+    religion_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    religion_checkbox.configure(fg_color ="#343638")
+    religion_checkbox.place(x=0, y=420)
+    religion_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    religion_text.place(x=30, y=420)
+    religion_button = ctk.CTkButton(skills_tab_frame, text="Religion", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    religion_button.place(x=55, y=420)
+    #--------SLEIGHT OF HAND
+    sleight_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    sleight_checkbox.configure(fg_color ="#343638")
+    sleight_checkbox.place(x=0, y=450)
+    sleight_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    sleight_text.place(x=30, y=450)
+    sleight_button = ctk.CTkButton(skills_tab_frame, text="Sleight of Hand", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    sleight_button.place(x=55, y=450)
+    #--------STEALTH
+    stealth_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    stealth_checkbox.configure(fg_color ="#343638")
+    stealth_checkbox.place(x=0, y=480)
+    stealth_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    stealth_text.place(x=30, y=480)
+    stealth_button = ctk.CTkButton(skills_tab_frame, text="Stealth", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    stealth_button.place(x=55, y=480)
+    #--------SURVIVAL
+    survival_checkbox = TristateCheckbox(skills_tab_frame, height=25, width=25, border_width=3)
+    survival_checkbox.configure(fg_color ="#343638")
+    survival_checkbox.place(x=0, y=510)
+    survival_text = CTkLabel(skills_tab_frame, text="  __  ", font=("Arial", 15))
+    survival_text.place(x=30, y=510)
+    survival_button = ctk.CTkButton(skills_tab_frame, text="Survival", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    survival_button.place(x=55, y=510)
+#---------------------------SAVING THROW FRAME
+    savethrow_tab = skills_frame.add("SAVES")
+    savethrow_tab_frame = ctk.CTkFrame(savethrow_tab, width=220, height=400, corner_radius=20)
+    savethrow_tab_frame.place(x=0, y=0)
+    #--------STR
+    strsave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    strsave_radio.configure(text="  __  ")
+    strsave_radio.place(x=0, y=0)
+    strsave_button = ctk.CTkButton(savethrow_tab_frame, text="Strength", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    strsave_button.place(x=52, y=0)
+    #--------DEX
+    dexsave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    dexsave_radio.configure(text="  __  ")
+    dexsave_radio.place(x=0, y=30)
+    dexsave_button = ctk.CTkButton(savethrow_tab_frame, text="Dexterity", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    dexsave_button.place(x=52, y=30)
+    #--------CON
+    consave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    consave_radio.configure(text="  __  ")
+    consave_radio.place(x=0, y=60)
+    consave_button = ctk.CTkButton(savethrow_tab_frame, text="Constitution", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    consave_button.place(x=52, y=60)
+    #--------INT
+    intsave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    intsave_radio.configure(text="  __  ")
+    intsave_radio.place(x=0, y=90)
+    intsave_button = ctk.CTkButton(savethrow_tab_frame, text="Intelligence", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    intsave_button.place(x=52, y=90)
+    #--------WIS
+    wissave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    wissave_radio.configure(text="  __  ")
+    wissave_radio.place(x=0, y=120)
+    wissave_button = ctk.CTkButton(savethrow_tab_frame, text="Wisdom", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    wissave_button.place(x=52, y=120)
+    #--------CHA
+    chasave_radio = ctk.CTkRadioButton(savethrow_tab_frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+    chasave_radio.configure(text="  __  ")
+    chasave_radio.place(x=0, y=150)
+    chasave_button = ctk.CTkButton(savethrow_tab_frame, text="Charisma", border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+    chasave_button.place(x=52, y=150)
 
 
 

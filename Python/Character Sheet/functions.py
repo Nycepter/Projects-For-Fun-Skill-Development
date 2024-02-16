@@ -1,6 +1,8 @@
 import customtkinter as ctk
 from customtkinter import *
 from typing import Union, Tuple, Dict, List, Callable, Optional, Any
+import tkinter as tk
+
 
 class IntSpinbox(ctk.CTkFrame):
     def __init__(self, *args,
@@ -111,6 +113,23 @@ class MyCTkTabview(ctk.CTkTabview):
             self.grid_rowconfigure(3, weight=0, minsize=self._outer_spacing)
 
         self.grid_columnconfigure(0, weight=1,)
+
+class TristateCheckbox(ctk.CTkButton):
+    def __init__(self, parent=None, **kwargs):
+        super().__init__(parent, **kwargs)
+        self.states = {0: "", 1: "P", 2: "E"}
+        self.current_state = 0
+        self.configure(text=self.states[self.current_state])
+        self.configure(command=self.change_state)
+
+    def change_state(self):
+        self.current_state = (self.current_state + 1) % 3
+        self.configure(text=self.states[self.current_state])
+        if self.current_state != 0:
+            self.configure(border_color="#1f6aa5")
+        else:
+            self.configure(border_color="#949A9F")
+
 
 
 
