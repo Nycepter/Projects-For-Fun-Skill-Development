@@ -3,6 +3,7 @@ import customtkinter as ctk
 from tkinter import *
 import sqlite3
 from functions import *
+from CTkTable import *
 
 
 ctk.set_appearance_mode("Dark")
@@ -10,11 +11,11 @@ ctk.set_appearance_mode("Dark")
 def main():
     # Create a new Tkinter window
     root = ctk.CTk()
-    root.title("My Application")
+    root.title("Nycepter's Character Manager")
     root.minsize(width=1600, height=1000)
     
 
-    tabs = ctk.CTkTabview(root, width=1550, height=950, corner_radius=20, fg_color="#383838")
+    tabs = ctk.CTkTabview(root, width=1550, height=980, corner_radius=20, fg_color="#383838")
     tabs.pack()
 
 
@@ -72,6 +73,9 @@ def main():
     #-----CHA
     cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
     cha_frame.place(x=10, y=612)
+
+
+    st_frame = ctk.CT
 
 
 
