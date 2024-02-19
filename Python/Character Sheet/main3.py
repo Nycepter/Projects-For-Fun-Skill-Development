@@ -6,8 +6,24 @@ from functions import *
 from CTkTable import *
 import tkinter.simpledialog as simpledialog
 
+import json
+import os
+
 
 ctk.set_appearance_mode("Dark")
+
+def load_data():
+    if os.path.exists('characters.json'):
+        with open('characters.json', 'r') as f:
+            return json.load(f)
+    else:
+        return {"characters": [], "last_selected_character": ""}
+    
+def save_data(data):
+    with open('characters.json', 'w') as f:
+        json.dump(data, f)
+
+
 
 
 
@@ -16,63 +32,145 @@ def main():
     root = ctk.CTk()
     root.title("Nycepter's Character Manager")
     root.minsize(width=1600, height=1000)
+
     
 
     tabs = ctk.CTkTabview(root, width=1550, height=980, corner_radius=20, fg_color="#383838")
     tabs.pack()
 
-    conn = sqlite3.connect('characters.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS characters
-                (name text)''')
-    c.execute('''CREATE TABLE IF NOT EXISTS last_selected_character
-            (name text)''')
-    c.execute("SELECT name FROM characters")
-    names = [row[0] for row in c.fetchall()]
-    names.append("New Character") 
-
-    c.execute("SELECT name FROM last_selected_character")
-    last_selected_name = c.fetchone()
+    # Load data from JSON file
+    data = load_data()
+    names = [character['name'] for character in data["characters"]]
+    names.append("New Character")
+    last_selected_name = data["last_selected_character"]
     print(last_selected_name)
+    print(data)
     
+    def unfocus_all(event):
+        if event.widget == root or event.widget.master in [tab1, tab2]:
+            root.focus_set()
 
+    root.bind('<1>', unfocus_all)
+        
 
 
 
 
 #--------------------FUNCTIONS
-    def on_name_selected(event):
-    # This function is called when a name is selected from the combobox
-        selected_name = name_box.get()
+    def load_character():
+        if not os.path.exists('characters.json'):
+            # If it doesn't exist, create it
+            with open('characters.json', 'w') as f:
+                f.write('{"characters": [], "last_selected_character": ""}')
+
+        # Now you can open the file
+        with open('characters.json', 'r') as f:
+            data = json.load(f)
+
+        # Get the name of the last selected character
+        last_selected_name = data['last_selected_character']
+
+        # Find the dictionary for the last selected character
+        for character in data['characters']:
+            if character['name'] == last_selected_name:
+                # Get the background value
+                background_listbox.set(character['background'])
+                background_listbox2.set(character['background'])
+                for key in attribute_objects:
+                    # Get the value for this key, if it exists
+                    value = character.get(key, '')
+                    # Delete existing content in the corresponding Attribute object
+                    attribute_objects[key].total.delete(0, 'end')
+                    # If a value exists, insert it into the Attribute object
+                    if value:
+                        attribute_objects[key].total.insert(0, value)
+
+                break
+
+
+    
+
+
+    def set_selected_character(namebox, selected_name):
+        data = load_data()
         if selected_name == "New Character":
-            name_box.set("")
-            name_box.configure(state="normal")
-            name_box.focus_set()
+            namebox.set("")
+            namebox.configure(state="normal")
+            namebox.focus_set()
         else:
-            c.execute("INSERT INTO last_selected_character VALUES (?)", (selected_name,))
-            c.execute("DELETE FROM last_selected_character WHERE rowid != last_insert_rowid()")
-            conn.commit()
-            c.execute('''CREATE TABLE IF NOT EXISTS characters
-                        (name text)''')
-            c.execute("SELECT name FROM characters")
-            names = [row[0] for row in c.fetchall()]
+            data["last_selected_character"] = selected_name
+            save_data(data)
+            data = load_data()
+            names = [character['name'] for character in data["characters"]]
             names.append("New Character")
             name_box.configure(values=names)
+            name_box2.configure(values=names)
+            load_character()
+            
+            
 
+    def on_name_selected_tab1(event):
+        selected_name = name_box.get()
+        set_selected_character(name_box, selected_name)
+        name_box2.set(selected_name)
+        load_character()
+          
+        # Set the selected character in the combobox on tab2
 
-    def on_enter_pressed(event):
-        # This function is called when the Enter key is pressed
+    def on_name_selected_tab2(event):
+        selected_name = name_box2.get()
+        set_selected_character(name_box2, selected_name)
+        name_box.set(selected_name)
+        load_character()
+        
+          # Set the selected character in the combobox on tab1
+
+    def on_enter_pressed(name_box):
         new_name = name_box.get()
         if new_name and new_name != "New Character":
-            # Insert the new name into the database
-            c.execute("INSERT INTO characters VALUES (?)", (new_name,))
-            c.execute("INSERT INTO last_selected_character VALUES (?)", (new_name,))
-            c.execute("DELETE FROM last_selected_character WHERE rowid != last_insert_rowid()")
-            conn.commit()
-            # Add the new name to the combobox
-            names.append(new_name)
-            name_box['values'] = names  # Update the values of the combobox
+            data = load_data()
+            # Create a dictionary for the new character
+            new_character = {'name': new_name, 'background': ''}
+            # Append the dictionary to the characters list
+            data["characters"].append(new_character)
+            data["last_selected_character"] = new_name
+            save_data(data)
+            data = load_data()
+            names = [character['name'] for character in data["characters"]]
+            names.append("New Character")
+            name_box['values'] = names
             name_box.configure(state="readonly")
+            name_box2['values'] = names
+            name_box2.configure(state="readonly")
+
+    def new_name_tab1(event):
+        new_name = name_box.get()
+        on_enter_pressed(name_box)
+        name_box2.set(new_name)  # Set the selected character in the combobox on tab2
+
+    def new_name_tab2(event):
+        new_name = name_box2.get()
+        on_enter_pressed(name_box2)
+        name_box.set(new_name)  # Set the selected character in the combobox on tab1
+
+    def set_background(bg):
+        data = load_data()
+        last_selected_name = data['last_selected_character']
+
+        # Find the dictionary for the last selected character
+        for character in data['characters']:
+            if character['name'] == last_selected_name:
+                # Set the background
+                character['background'] = bg
+                break
+
+        save_data(data)
+
+    
+
+
+        
+    
 
 
 
@@ -92,6 +190,8 @@ def main():
 
 
 
+
+
 #--------------------TAB 1 FRAMES
     #-----NAME
     name_frame1 = ctk.CTkFrame(tab1, width=300, height=75, corner_radius=20)
@@ -105,34 +205,9 @@ def main():
     #-----LEVEL
     level_frame = ctk.CTkFrame(tab1, width=1490, height=17, corner_radius=20)
     level_frame.place(x=10, y=90)
-    #-----STR
-
-    #-----DEX
-    # dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # dex_frame.place(x=10, y=212)
-    # #-----CON
-    # con_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # con_frame.place(x=10, y=312)
-    # #-----INT
-    # int_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # int_frame.place(x=10, y=412)
-    # #-----WIS
-    # wis_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # wis_frame.place(x=10, y=512)
-    # #-----CHA
-    # cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # cha_frame.place(x=10, y=612)
-    #-----SKILLS/SAVING FRAME
+    #------SKILLS/SAVE
     skills_frame = ctk.CTkTabview(tab1, width=220, height=610, corner_radius=20, fg_color="#2b2b2b")
     skills_frame.place(x=90, y=112)
-
-    
-
-
-
-
-
-
 
 
 #--------------------TAB 2 FRAMES
@@ -149,15 +224,20 @@ def main():
 #-------------------NAME FRAME
     character_name_label = ctk.CTkLabel(name_frame1, text="CHARACTER:", fg_color="#1f6aa5", corner_radius=20)
     character_name_label.place(x=100, y=5)
-    name_box = ctk.CTkComboBox(name_frame1, values= names, width=280, state="readonly", command=on_name_selected)
+    name_box = ctk.CTkComboBox(name_frame1, values= names, width=280, state="readonly", command=on_name_selected_tab1)
     if last_selected_name is not None:
-        name_box.set(last_selected_name[0])
-    name_box.bind('<Return>', on_enter_pressed)
+        name_box.set(last_selected_name)
+    name_box.bind('<Return>', new_name_tab1)
+    name_box.bind('<FocusOut>', new_name_tab1)
     name_box.place(x=10, y=35)
     #--------------------------------------------------------------TAB 2
     character_name_label2 = ctk.CTkLabel(name_frame2, text="CHARACTER:", fg_color="#1f6aa5", corner_radius=20)
     character_name_label2.place(x=100, y=5)
-    name_box2 = ctk.CTkComboBox(name_frame2, values= names, state="readonly", width=280)
+    name_box2 = ctk.CTkComboBox(name_frame2, values= names, width=280, state="readonly", command=on_name_selected_tab2)
+    if last_selected_name is not None:
+        name_box2.set(last_selected_name)
+    name_box2.bind('<Return>', new_name_tab2)
+    name_box2.bind('<FocusOut>', new_name_tab2)
     name_box2.place(x=10, y=35)
 
 #-------------------DETAILS FRAME
@@ -173,7 +253,7 @@ def main():
     #-------
     background_name_label = ctk.CTkLabel(details_frame1, text="BACKGROUND:", fg_color="#1f6aa5", corner_radius=20)
     background_name_label.place(x=260, y=5)
-    background_listbox = ctk.CTkComboBox(details_frame1, values= backgrounds, state="readonly", width=150)
+    background_listbox = ctk.CTkComboBox(details_frame1, values= backgrounds, state="readonly", width=150, command=set_background)
     background_listbox.place(x=380, y=5)
     #--------
     race_name_label = ctk.CTkLabel(details_frame1, text="RACE:", fg_color="#1f6aa5", corner_radius=20)
@@ -233,93 +313,13 @@ def main():
     level_prgress_bar.set(0)
 
 #-------------------------STATS FRAME
-    
     attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
     x = 10
     y = 110
+    attribute_objects = {}  # Create an empty dictionary
     for attribute in attributes:
-        Attribute(tab1, attribute, x, y)
+        attribute_objects[attribute] = Attribute(tab1, attribute, x, y)
         y += 112  # Adjust as needed
-
-
-
-    -----STR
-
-    -----DEX
-    dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    dex_frame.place(x=10, y=212)
-    #-----CON
-    con_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    con_frame.place(x=10, y=312)
-    #-----INT
-    int_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    int_frame.place(x=10, y=412)
-    #-----WIS
-    wis_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    wis_frame.place(x=10, y=512)
-    #-----CHA
-    cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    cha_frame.place(x=10, y=612)
-
-    #--------STR
-    str_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    str_frame.place(x=10, y=112)
-
-    str_tab = str_frame.add("STR:")
-    str_frame._segmented_button.configure(corner_radius=10)
-    str_tab_frame = ctk.CTkFrame(str_tab, width=60, height=100, corner_radius=20)
-    str_tab_frame.place(x=0, y=0)
-    str_mod = ctk.CTkLabel(str_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    str_mod.place(x=0, y=0)
-    str_total = ctk.CTkEntry(str_frame, width=40, height=15, corner_radius=20, border_width=1)
-    str_total.place(x=10, y=70)
-    #--------DEX
-    dex_tab = dex_frame.add("DEX:")
-    dex_frame._segmented_button.configure(corner_radius=10)
-    dex_tab_frame = ctk.CTkFrame(dex_tab, width=60, height=100, corner_radius=20)
-    dex_tab_frame.place(x=0, y=0)
-    dex_mod = ctk.CTkLabel(dex_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    dex_mod.place(x=0, y=0)
-    dex_total = ctk.CTkEntry(dex_frame, width=40, height=15, corner_radius=20, border_width=1)
-    dex_total.place(x=10, y=70)
-    #--------CON
-    con_tab = con_frame.add("CON:")
-    con_frame._segmented_button.configure(corner_radius=10)
-    con_tab_frame = ctk.CTkFrame(con_tab, width=60, height=100, corner_radius=20)
-    con_tab_frame.place(x=0, y=0)
-    con_mod = ctk.CTkLabel(con_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    con_mod.place(x=0, y=0)
-    con_total = ctk.CTkEntry(con_frame, width=40, height=15, corner_radius=20, border_width=1)
-    con_total.place(x=10, y=70)
-    #--------INT
-    int_tab = int_frame.add("INT:")
-    int_frame._segmented_button.configure(corner_radius=10)
-    int_tab_frame = ctk.CTkFrame(int_tab, width=60, height=100, corner_radius=20)
-    int_tab_frame.place(x=0, y=0)
-    int_mod = ctk.CTkLabel(int_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    int_mod.place(x=0, y=0)
-    int_total = ctk.CTkEntry(int_frame, width=40, height=15, corner_radius=20, border_width=1)
-    int_total.place(x=10, y=70)
-    #--------WIS
-    wis_tab = wis_frame.add("WIS:")
-    wis_frame._segmented_button.configure(corner_radius=10)
-    wis_tab_frame = ctk.CTkFrame(wis_tab, width=60, height=100, corner_radius=20)
-    wis_tab_frame.place(x=0, y=0)
-    wis_mod = ctk.CTkLabel(wis_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    wis_mod.place(x=0, y=0)
-    wis_total = ctk.CTkEntry(wis_frame, width=40, height=15, corner_radius=20, border_width=1)
-    wis_total.place(x=10, y=70)
-    #--------CHA
-    cha_tab = cha_frame.add("CHA:")
-    cha_frame._segmented_button.configure(corner_radius=10)
-    cha_tab_frame = ctk.CTkFrame(cha_tab, width=60, height=100, corner_radius=20)
-    cha_tab_frame.place(x=0, y=0)
-    cha_mod = ctk.CTkLabel(cha_tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
-    cha_mod.place(x=0, y=0)
-    cha_total = ctk.CTkEntry(cha_frame, width=40, height=15, corner_radius=20, border_width=1)
-    cha_total.place(x=10, y=70)
-
-
 #---------------------------SKILLS FRAME
     skills_tab = skills_frame.add("SKILLS")
     skills_frame._segmented_button.configure(corner_radius=20)
@@ -341,10 +341,14 @@ def main():
         SaveThrow(savethrow_tab_frame, attr, 0, i*30)
 
 
+    
 
+#---------------------------changes
+        
+    load_character()
+    
 
-
-
+    
 
     root.mainloop()
 

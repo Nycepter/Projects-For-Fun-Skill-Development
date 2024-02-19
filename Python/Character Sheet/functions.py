@@ -2,6 +2,21 @@ import customtkinter as ctk
 from customtkinter import *
 from typing import Union, Tuple, Dict, List, Callable, Optional, Any
 import tkinter as tk
+import json
+
+
+
+
+def load_data():
+    if os.path.exists('characters.json'):
+        with open('characters.json', 'r') as f:
+            return json.load(f)
+    else:
+        return {"characters": [], "last_selected_character": ""}
+    
+def save_data(data):
+    with open('characters.json', 'w') as f:
+        json.dump(data, f)
 
 
 class IntSpinbox(ctk.CTkFrame):
@@ -129,6 +144,57 @@ class TristateCheckbox(ctk.CTkButton):
             self.configure(border_color="#1f6aa5")
         else:
             self.configure(border_color="#949A9F")
+
+class Skill:
+    def __init__(self, frame, skill_name, y_position):
+        self.checkbox = TristateCheckbox(frame, height=25, width=25, border_width=3)
+        self.checkbox.configure(fg_color ="#343638")
+        self.checkbox.place(x=0, y=y_position)
+
+        self.text = CTkLabel(frame, text="  __  ", font=("Arial", 15))
+        self.text.place(x=30, y=y_position)
+
+        self.button = ctk.CTkButton(frame, text=skill_name, border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+        self.button.place(x=55, y=y_position)
+
+class SaveThrow:
+    def __init__(self, frame, attribute, x, y):
+        self.radio = ctk.CTkRadioButton(frame, radiobutton_width=20, radiobutton_height=20, font=("Arial", 15))
+        self.radio.configure(text="  __  ")
+        self.radio.place(x=x, y=y)
+        self.button = ctk.CTkButton(frame, text=attribute, border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+        self.button.place(x=x+52, y=y)
+
+class Attribute:
+    def __init__(self, frame, name, x, y):
+        self.frame = MyCTkTabview(frame, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+        self.frame.place(x=x, y=y)
+        self.tab = self.frame.add(f"{name}:")
+        self.frame._segmented_button.configure(corner_radius=10)
+        self.tab_frame = ctk.CTkFrame(self.tab, width=60, height=100, corner_radius=20)
+        self.tab_frame.place(x=0, y=0)
+        self.mod = ctk.CTkLabel(self.tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
+        self.mod.place(x=0, y=0)
+        self.total = ctk.CTkEntry(self.frame, width=40, height=15, corner_radius=20, border_width=1)
+        self.total.bind('<Return>', lambda event: self.set_attribute(name))
+        self.total.bind('<FocusOut>', lambda event: self.set_attribute(name))
+        self.total.place(x=10, y=70)
+
+
+    def set_attribute(self, name):
+        data = load_data()
+        last_selected_name = data['last_selected_character']
+
+        # Find the dictionary for the last selected character
+        for character in data['characters']:
+            if character['name'] == last_selected_name:
+                # Set the background
+                character[name] = self.total.get()
+                break
+
+        save_data(data)
+
+
 
 
 

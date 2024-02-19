@@ -2,14 +2,11 @@ import tkinter as tk
 import customtkinter as ctk
 from tkinter import *
 import sqlite3
-from functions import *
+from functions import * 
 from CTkTable import *
-import tkinter.simpledialog as simpledialog
 
 
 ctk.set_appearance_mode("Dark")
-
-
 
 def main():
     # Create a new Tkinter window
@@ -25,20 +22,11 @@ def main():
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS characters
                 (name text)''')
+    c.execute("SELECT name FROM characters")
     c.execute('''CREATE TABLE IF NOT EXISTS last_selected_character
             (name text)''')
-    c.execute("SELECT name FROM characters")
     names = [row[0] for row in c.fetchall()]
-    names.append("New Character") 
-
-    c.execute("SELECT name FROM last_selected_character")
-    last_selected_name = c.fetchone()
-    print(last_selected_name)
-    
-
-
-
-
+    names.append("New Character")
 
 #--------------------FUNCTIONS
     def on_name_selected(event):
@@ -49,15 +37,14 @@ def main():
             name_box.configure(state="normal")
             name_box.focus_set()
         else:
-            c.execute("INSERT INTO last_selected_character VALUES (?)", (selected_name,))
-            c.execute("DELETE FROM last_selected_character WHERE rowid != last_insert_rowid()")
-            conn.commit()
-            c.execute('''CREATE TABLE IF NOT EXISTS characters
-                        (name text)''')
-            c.execute("SELECT name FROM characters")
-            names = [row[0] for row in c.fetchall()]
-            names.append("New Character")
-            name_box.configure(values=names)
+            conn = sqlite3.connect('characters.db')
+        c = conn.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS characters
+                    (name text)''')
+        c.execute("SELECT name FROM characters")
+        names = [row[0] for row in c.fetchall()]
+        names.append("New Character")
+        name_box.configure(values=names)
 
 
     def on_enter_pressed(event):
@@ -66,18 +53,17 @@ def main():
         if new_name and new_name != "New Character":
             # Insert the new name into the database
             c.execute("INSERT INTO characters VALUES (?)", (new_name,))
-            c.execute("INSERT INTO last_selected_character VALUES (?)", (new_name,))
-            c.execute("DELETE FROM last_selected_character WHERE rowid != last_insert_rowid()")
             conn.commit()
             # Add the new name to the combobox
             names.append(new_name)
             name_box['values'] = names  # Update the values of the combobox
-            name_box.configure(state="readonly")
+            name_box.configure(state="readonly")   
+    
 
 
 
 #-------------------VARIABLES
-
+    names = ["Test 1", "Test 2"]
     classes = ["Test 1", "Test 2"]
     subclasses = ["Test 1", "Test 2"]
     backgrounds = ["Test 1", "Test 2"]
@@ -106,23 +92,27 @@ def main():
     level_frame = ctk.CTkFrame(tab1, width=1490, height=17, corner_radius=20)
     level_frame.place(x=10, y=90)
     #-----STR
-
+    str_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    str_frame.place(x=10, y=112)
     #-----DEX
-    # dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # dex_frame.place(x=10, y=212)
-    # #-----CON
-    # con_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # con_frame.place(x=10, y=312)
-    # #-----INT
-    # int_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # int_frame.place(x=10, y=412)
-    # #-----WIS
-    # wis_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # wis_frame.place(x=10, y=512)
-    # #-----CHA
-    # cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    # cha_frame.place(x=10, y=612)
-    #-----SKILLS/SAVING FRAME
+    dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    dex_frame.place(x=10, y=212)
+    #-----CON
+    con_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    con_frame.place(x=10, y=312)
+    #-----INT
+    int_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    int_frame.place(x=10, y=412)
+    #-----WIS
+    wis_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    wis_frame.place(x=10, y=512)
+    #-----CHA
+    cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    cha_frame.place(x=10, y=612)
+    #-----SAVING THROW
+    # savethrow_frame = ctk.CTkTabview(tab1, width=220, height=250, corner_radius=20, fg_color="#2b2b2b", state="active")
+    # savethrow_frame.place(x=330, y=112)
+    #-----SKILLS
     skills_frame = ctk.CTkTabview(tab1, width=220, height=610, corner_radius=20, fg_color="#2b2b2b")
     skills_frame.place(x=90, y=112)
 
@@ -150,8 +140,6 @@ def main():
     character_name_label = ctk.CTkLabel(name_frame1, text="CHARACTER:", fg_color="#1f6aa5", corner_radius=20)
     character_name_label.place(x=100, y=5)
     name_box = ctk.CTkComboBox(name_frame1, values= names, width=280, state="readonly", command=on_name_selected)
-    if last_selected_name is not None:
-        name_box.set(last_selected_name[0])
     name_box.bind('<Return>', on_enter_pressed)
     name_box.place(x=10, y=35)
     #--------------------------------------------------------------TAB 2
@@ -233,38 +221,7 @@ def main():
     level_prgress_bar.set(0)
 
 #-------------------------STATS FRAME
-    
-    attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-    x = 10
-    y = 110
-    for attribute in attributes:
-        Attribute(tab1, attribute, x, y)
-        y += 112  # Adjust as needed
-
-
-
-    -----STR
-
-    -----DEX
-    dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    dex_frame.place(x=10, y=212)
-    #-----CON
-    con_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    con_frame.place(x=10, y=312)
-    #-----INT
-    int_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    int_frame.place(x=10, y=412)
-    #-----WIS
-    wis_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    wis_frame.place(x=10, y=512)
-    #-----CHA
-    cha_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    cha_frame.place(x=10, y=612)
-
     #--------STR
-    str_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
-    str_frame.place(x=10, y=112)
-
     str_tab = str_frame.add("STR:")
     str_frame._segmented_button.configure(corner_radius=10)
     str_tab_frame = ctk.CTkFrame(str_tab, width=60, height=100, corner_radius=20)
