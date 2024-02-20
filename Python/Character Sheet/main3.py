@@ -97,16 +97,16 @@ def main():
                 char_image = character.get('PIC', '')
                 if char_image:
                     char_image = Image.open(char_image)
-                    char_image = char_image.resize((270, 270), Image.LANCZOS)
+                    char_image = char_image.resize((250, 250), Image.LANCZOS)
                     char_image = add_rounded_corners(char_image, 20)
-                    picture_image = ctk.CTkImage(dark_image=char_image, size=(270, 270))
+                    picture_image = ctk.CTkImage(dark_image=char_image, size=(250, 250))
                     pic_button = ctk.CTkButton(picture_frame, image=picture_image, text="", fg_color="transparent", hover=FALSE, border_width=0, border_spacing=0, corner_radius=20, bg_color="transparent")
-                    pic_button.place(x=0, y=10)
+                    pic_button.place(x=2, y=12)
                     pic_button.configure(image=picture_image)
                 else:
                     picture_image = None
-                    pic_button = ctk.CTkButton(picture_frame, image=picture_image, text="Choose Image", fg_color="transparent", border_width=2, border_spacing=0, height=270, width=270, corner_radius=20, command=browse_picture, border_color="#1f6aa5")
-                    pic_button.place(x=16, y=13)
+                    pic_button = ctk.CTkButton(picture_frame, image=picture_image, text="Choose Image", fg_color="transparent", border_width=2, border_spacing=0, height=250, width=250, corner_radius=20, command=browse_picture, border_color="#1f6aa5")
+                    pic_button.place(x=18, y=15)
 
                         
 
@@ -201,11 +201,11 @@ def main():
         char_image_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.png")])
         # Open the image file to get an image object
         char_image = Image.open(char_image_path)
-        char_image = char_image.resize((270, 270), Image.LANCZOS)
+        char_image = char_image.resize((250, 250), Image.LANCZOS)
         char_image = add_rounded_corners(char_image, 20)
-        picture_image = ctk.CTkImage(dark_image=char_image, size=(270, 270))
+        picture_image = ctk.CTkImage(dark_image=char_image, size=(250, 250))
         button = ctk.CTkButton(picture_frame, image=picture_image, text="", fg_color="transparent", hover=FALSE, border_width=0, border_spacing=0, border_color="#1f6aa5", corner_radius=20, bg_color="transparent")
-        button.place(x=0, y=10)
+        button.place(x=2, y=12)
         for character in data['characters']:
             if character['name'] == last_selected_name:
                 character['PIC'] = char_image_path
@@ -384,13 +384,23 @@ def main():
     for i, attr in enumerate(attributes):
         SaveThrow(savethrow_tab_frame, attr, 0, i*30)
 
-#-----------------------------PICTURE FRAME
-
+#-----------------------------INFO FRAME
+    # info_tab_frame = MyCTkTabview(tab1, width=450, height=350, corner_radius=20)
+    # info_tab_frame.place(x=320, y=112)
+    # info_tab = info_tab_frame.add("INFO")
+    # info_tab_frame._segmented_button.configure(corner_radius=20, state="readonly")
+    picture_frame =CTkFrame(tab1, width=450, height=592, corner_radius=20)
+    picture_frame.place(x=320, y=130)
+    browse_button = ctk.CTkButton(options_frame1, text="Change Image", command=browse_picture, corner_radius=20, width=50)
+    browse_button.place(x=5, y=5) 
+    #-----------------------HP
+    hp_frame =CTkFrame(picture_frame, width=150, height=250, corner_radius=20, fg_color="#343434")
+    hp_frame.place(x=282, y=15)
+    hp_bar = CTkProgressBar(picture_frame, width=250)
+    hp_bar.place(x=18, y=268)
+    max_hp_button= ctk.CTkButton(hp_frame, text="Max HP: 47", border_spacing=0, width=20, height=10, fg_color="#343434", font=("Arial", 15))
+    max_hp_button.place(x=5, y=5)
     
-    picture_frame =CTkFrame(tab1, width=300, height=300)
-    picture_frame.place(x=468, y=130)
-    browse_button = ctk.CTkButton(options_frame1, text="Browse Image", command=browse_picture, corner_radius=20, width=50)
-    browse_button.place(x=5, y=5)  # Adjust the position as needed
     
 
 
