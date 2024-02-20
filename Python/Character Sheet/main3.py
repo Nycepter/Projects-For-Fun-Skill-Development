@@ -385,21 +385,22 @@ def main():
         SaveThrow(savethrow_tab_frame, attr, 0, i*30)
 
 #-----------------------------INFO FRAME
-    # info_tab_frame = MyCTkTabview(tab1, width=450, height=350, corner_radius=20)
-    # info_tab_frame.place(x=320, y=112)
-    # info_tab = info_tab_frame.add("INFO")
-    # info_tab_frame._segmented_button.configure(corner_radius=20, state="readonly")
     picture_frame =CTkFrame(tab1, width=450, height=592, corner_radius=20)
     picture_frame.place(x=320, y=130)
     browse_button = ctk.CTkButton(options_frame1, text="Change Image", command=browse_picture, corner_radius=20, width=50)
     browse_button.place(x=5, y=5) 
     #-----------------------HP
-    hp_frame =CTkFrame(picture_frame, width=150, height=250, corner_radius=20, fg_color="#343434")
-    hp_frame.place(x=282, y=15)
-    hp_bar = CTkProgressBar(picture_frame, width=250)
+    hp_bar = CTkProgressBar(picture_frame, width=250, progress_color="green")
     hp_bar.place(x=18, y=268)
-    max_hp_button= ctk.CTkButton(hp_frame, text="Max HP: 47", border_spacing=0, width=20, height=10, fg_color="#343434", font=("Arial", 15))
-    max_hp_button.place(x=5, y=5)
+
+    max_hp_label = ctk.CTkButton(picture_frame, text="MAX HP:", fg_color="#1f6aa5", corner_radius=20, width=50)
+    max_hp_label.place(x=285, y=16)
+    max_hp_total = ctk.CTkButton(picture_frame, fg_color="#2b2b2b", width=50, text="24", border_color="#949A9F", state="readonly", border_width=2, font=("Arial", 18))
+    max_hp_total.place(x=370, y=16)
+
+
+
+
     
     
 
@@ -407,9 +408,6 @@ def main():
 
 
 
-
-#name_frame1 = ctk.CTkFrame(tab1, width=300, height=75, corner_radius=20)
-#name_frame1.place(x=10, y=10)
 
 
     
