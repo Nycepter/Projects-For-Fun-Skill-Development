@@ -1,1 +1,1 @@
-backg
+bg_color="#1f6aa5"

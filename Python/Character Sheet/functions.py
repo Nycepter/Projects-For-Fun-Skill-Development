@@ -3,8 +3,37 @@ from customtkinter import *
 from typing import Union, Tuple, Dict, List, Callable, Optional, Any
 import tkinter as tk
 import json
+import math
+from typing import Tuple, Dict, Callable, List
+try:
+    from PIL import Image, ImageTk, ImageChops
+except ImportError:
+    pass
 
 
+
+
+
+
+
+from PIL import Image, ImageDraw, ImageOps
+
+def add_rounded_corners(image, radius):
+    """Add rounded corners to an image."""
+    image = image.convert("RGBA")
+    circle = Image.new('L', (radius * 2, radius * 2), 0)
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, radius * 2, radius * 2), fill=255)
+    w, h = image.size
+    alpha = Image.new('L', image.size, 255)
+    alpha.paste(circle.crop((0, 0, radius, radius)), (0, 0))
+    alpha.paste(circle.crop((0, radius, radius, radius * 2)), (0, h - radius))
+    alpha.paste(circle.crop((radius, 0, radius * 2, radius)), (w - radius, 0))
+    alpha.paste(circle.crop((radius, radius, radius * 2, radius * 2)), (w - radius, h - radius))
+    # Combine the new alpha channel with the original alpha channel
+    alpha = ImageChops.multiply(alpha, image.split()[3])
+    image.putalpha(alpha)
+    return image
 
 
 def load_data():
@@ -173,11 +202,13 @@ class Attribute:
         self.frame._segmented_button.configure(corner_radius=10)
         self.tab_frame = ctk.CTkFrame(self.tab, width=60, height=100, corner_radius=20)
         self.tab_frame.place(x=0, y=0)
-        self.mod = ctk.CTkLabel(self.tab_frame, text="+2", corner_radius=20, height=8, width=8, font=("Arial", 25))
+        self.mod = ctk.CTkLabel(self.tab_frame, text="", corner_radius=20, height=8, width=8, font=("Arial", 25))
         self.mod.place(x=0, y=0)
         self.total = ctk.CTkEntry(self.frame, width=40, height=15, corner_radius=20, border_width=1)
         self.total.bind('<Return>', lambda event: self.set_attribute(name))
         self.total.bind('<FocusOut>', lambda event: self.set_attribute(name))
+        self.total.bind('<Return>', lambda event: self.set_attribute_mod(name))
+        self.total.bind('<FocusOut>', lambda event: self.set_attribute_mod(name))
         self.total.place(x=10, y=70)
 
 
@@ -193,6 +224,25 @@ class Attribute:
                 break
 
         save_data(data)
+    
+    def set_attribute_mod(self, name):
+        data = load_data()
+        last_selected_name = data['last_selected_character']
+
+        # Find the dictionary for the last selected character
+        for character in data['characters']:
+            if character['name'] == last_selected_name:
+                # Set the background
+                value = math.floor((int(self.total.get()) - 10) / 2)
+                character[f"{name}_mod"] = f"{f' {value}' if value < 0 else f'+{value}'}"
+                self.mod.configure(text=f"{f' {value}' if value < 0 else f'+{value}'}")
+
+        save_data(data)
+
+
+
+
+
 
 
 
