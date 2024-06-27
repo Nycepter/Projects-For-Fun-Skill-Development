@@ -1,1 +1,1 @@
-ctk.CTkButton(frame, text=skill_name, border_spacing=0, width=20, height=10, fg_color="#2B2B2B", font=("Arial", 15))
+ctk.CTkCheckBox

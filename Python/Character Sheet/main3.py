@@ -136,6 +136,7 @@ def main():
             name_box.configure(values=names)
             name_box2.configure(values=names)
             load_character()
+        
             
             
 
@@ -198,6 +199,8 @@ def main():
         save_data(data)
 
     def browse_picture():
+        data = load_data()
+        last_selected_name = data['last_selected_character']
         char_image_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.png")])
         # Open the image file to get an image object
         char_image = Image.open(char_image_path)
@@ -208,6 +211,7 @@ def main():
         button.place(x=2, y=12)
         for character in data['characters']:
             if character['name'] == last_selected_name:
+                print(last_selected_name)
                 character['PIC'] = char_image_path
         save_data(data)
 
@@ -385,7 +389,7 @@ def main():
         SaveThrow(savethrow_tab_frame, attr, 0, i*30)
 
 #-----------------------------INFO FRAME
-    picture_frame =CTkFrame(tab1, width=450, height=592, corner_radius=20)
+    picture_frame =CTkFrame(tab1, width=470, height=592, corner_radius=20)
     picture_frame.place(x=320, y=130)
     browse_button = ctk.CTkButton(options_frame1, text="Change Image", command=browse_picture, corner_radius=20, width=50)
     browse_button.place(x=5, y=5) 
@@ -393,10 +397,60 @@ def main():
     hp_bar = CTkProgressBar(picture_frame, width=250, progress_color="green")
     hp_bar.place(x=18, y=268)
 
-    max_hp_label = ctk.CTkButton(picture_frame, text="MAX HP:", fg_color="#1f6aa5", corner_radius=20, width=50)
+    max_hp_label = ctk.CTkButton(picture_frame, text="MAX HP:", fg_color="#1f6aa5", corner_radius=20, width=106)
     max_hp_label.place(x=285, y=16)
     max_hp_total = ctk.CTkButton(picture_frame, fg_color="#2b2b2b", width=50, text="24", border_color="#949A9F", state="readonly", border_width=2, font=("Arial", 18))
-    max_hp_total.place(x=370, y=16)
+    max_hp_total.place(x=395, y=16)
+
+    current_hp_label = ctk.CTkLabel(picture_frame, text="CURRENT HP:", fg_color="#1f6aa5", corner_radius=20, width=50)
+    current_hp_label.place(x=285, y=51)
+    current_hp_total = ctk.CTkEntry(picture_frame, fg_color="#2b2b2b", width=50, border_color="#949A9F", border_width=2, font=("Arial", 18, "bold"), text_color="green")
+    current_hp_total.place(x=395, y=51)
+
+    temp_hp_label = ctk.CTkLabel(picture_frame, text="TEMP HP:", fg_color="#1f6aa5", corner_radius=20, width=106)
+    temp_hp_label.place(x=285, y=86)
+    temp_hp_total = ctk.CTkEntry(picture_frame, fg_color="#2b2b2b", width=50, border_color="#949A9F", border_width=2, font=("Arial", 18, "bold"))
+    temp_hp_total.place(x=395, y=86)
+
+    hit_dice_tab = MyCTkTabview(picture_frame, height=100, width=160, fg_color="#383838", corner_radius=20)
+    hit_dice_tab.place(x=285, y=120)
+    hit_dice_name = hit_dice_tab.add("HIT DICE")
+    hit_dice_tab._segmented_button.configure(corner_radius=10)
+    hit_dice_label = CTkButton(hit_dice_name, width=20, text="1d6 (2/2)", border_color="#383838", border_width=2, font=("Arial", 13))
+    hit_dice_label.grid(column=0,row=0)
+
+    hit_dice_label2 = CTkButton(hit_dice_name, width=20, text="1d8: (1/2)", border_color="#383838", border_width=2, font=("Arial", 13))
+    hit_dice_label2.grid(column=1,row=0)
+
+    hit_dice_label3 = CTkButton(hit_dice_name, width=20, text="1d10: (0/0)", border_color="#383838", border_width=2, font=("Arial", 13))
+    hit_dice_label3.grid(column=0,row=1)
+
+    hit_dice_label4 = CTkButton(hit_dice_name, width=20, text="1d11: (0/0)", border_color="#383838", border_width=2, font=("Arial", 13))
+    hit_dice_label4.grid(column=1,row=1)
+
+    death_save_tab = MyCTkTabview(picture_frame, height=100, width=160, fg_color="#383838", corner_radius=20)
+    death_save_tab.place(x=285, y=220)
+    death_save_name = death_save_tab.add("DEATH SAVES")
+    death_save_tab._segmented_button.configure(corner_radius=10)
+
+    death_save_label_pass = ctk.CTkLabel(death_save_name, font=("Arial", 15), text="Pass ---")
+    death_save_label_pass.place(x=0, y=0)
+    death_save_pass1 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="green")
+    death_save_pass1.place(x=55, y=0)
+    death_save_pass2 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="green")
+    death_save_pass2.place(x=80, y=0)
+    death_save_pass3 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="green")
+    death_save_pass3.place(x=105, y=0)
+
+    death_save_label_fail = ctk.CTkLabel(death_save_name, font=("Arial", 15), text="Fail -----")
+    death_save_label_fail.place(x=0, y=30)
+    death_save_fail1 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="red")
+    death_save_fail1.place(x=55, y=30)
+    death_save_fail2 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="red")
+    death_save_fail2.place(x=80, y=30)
+    death_save_fail3 = ctk.CTkCheckBox(death_save_name, checkbox_width=20, checkbox_height=20, text="", corner_radius=100, fg_color="red")
+    death_save_fail3.place(x=105, y=30)
+
 
 
 

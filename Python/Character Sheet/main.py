@@ -274,6 +274,8 @@ def main():
     str_total = ctk.CTkEntry(str_frame, width=40, height=15, corner_radius=20, border_width=1)
     str_total.place(x=10, y=70)
     #--------DEX
+    dex_frame = MyCTkTabview(tab1, width=60, height=100, corner_radius=20, fg_color="#2b2b2b")
+    dex_frame.place(x=10, y=212)
     dex_tab = dex_frame.add("DEX:")
     dex_frame._segmented_button.configure(corner_radius=10)
     dex_tab_frame = ctk.CTkFrame(dex_tab, width=60, height=100, corner_radius=20)

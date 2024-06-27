@@ -174,6 +174,23 @@ class TristateCheckbox(ctk.CTkButton):
         else:
             self.configure(border_color="#949A9F")
 
+class DualCheckbox(ctk.CTkButton):
+    def __init__(self, parent=None, **kwargs):
+        super().__init__(parent, **kwargs)
+        self.states = {0: "", 1: "X"}
+        self.current_state = 0
+        self.configure(text=self.states[self.current_state])
+        self.configure(command=self.change_state)
+
+
+    def change_state(self):
+        self.current_state = (self.current_state + 1) % 2
+        self.configure(text=self.states[self.current_state])
+        if self.current_state != 0:
+            self.configure(border_color="red", font=("Arial", 13, "bold"), fg_color="red", corner_radius=100, border_spacing=0)
+        else:
+            self.configure(border_color="#949A9F", fg_color="#343638")
+
 class Skill:
     def __init__(self, frame, skill_name, y_position):
         self.checkbox = TristateCheckbox(frame, height=25, width=25, border_width=3)
