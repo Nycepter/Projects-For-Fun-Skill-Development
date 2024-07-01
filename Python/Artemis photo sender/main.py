@@ -13,7 +13,7 @@ from pydrive2.auth import ServiceAccountCredentials
 from google.oauth2.service_account import Credentials
 
 # Service Account Authorization
-service_account_key_file ="artemissender.json"
+service_account_key_file =""
 scope = ['https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials.from_json_keyfile_name(service_account_key_file, scope)
 gauth = GoogleAuth()
@@ -22,11 +22,11 @@ drive = GoogleDrive(gauth)
 
 
 #SMTP Info
-my_email = "nycepter@gmail.com"
-my_password = "wzgiirneenpphias"
+my_email = ""
+my_password = ""
  
 # Drive Getting Photos-------------------------------------------
-folder_id = '1tw_v59Mqep3oq52LPA0wVCk9D27n8Rsi'
+folder_id = ''
 file_list = drive.ListFile({
     'q': f"'{folder_id}' in parents and mimeType contains 'image/' and trashed=false"
 }).GetList()
@@ -44,9 +44,9 @@ file.GetContentFile(selected_image_name)
 # --------------------------------------------------------
 
 # Email Details
-from_email = 'nycepter@gmail.com'
+from_email = ''
 to_email = ''
-subject = 'Daily Picture Of Artemis'
+subject = 'Daily Picture'
 
 # Functions
 def send_email(email):
